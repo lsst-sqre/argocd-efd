@@ -9,6 +9,7 @@ echo "apiVersion: v1
 kind: Secret
 metadata:
   name: vault-secrets-operator
+  namespace: vault-secrets-operator
 type: Opaque
 data:
   VAULT_TOKEN: $(echo -n "$VAULT_TOKEN" | base64)
