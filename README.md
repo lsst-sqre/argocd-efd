@@ -4,7 +4,7 @@ EFD deployment configuration managed by Argo CD
 
 ## Bootstrap an EFD deployment
 
-The EFD uses the [app of apps pattern](https://argoproj.github.io/argo-cd/operator-manual/cluster-bootstrapping/) to bootstrap a new EFD deployment.
+`argocd-efd` uses the [app of apps pattern](https://argoproj.github.io/argo-cd/operator-manual/cluster-bootstrapping/) to bootstrap a new EFD deployment.
 
 From the CLI, use the following to create and sync the parent application, e.g., `dev-efd` on the same cluster where Argo CD is running.
 
