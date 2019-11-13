@@ -1,0 +1,7 @@
+apiVersion: ricoberger.de/v1alpha1
+kind: VaultSecret
+metadata:
+  name: test-gke-influxdb
+spec:
+  path: secret/dm/square/efd/test-gke/influxdb_admin 
+  type: Opaque

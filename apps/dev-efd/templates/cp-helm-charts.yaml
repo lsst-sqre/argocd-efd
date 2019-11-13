@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cp-helm-charts
+spec:
+  finalizers:
+    - kubernetes
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cp-helm-charts
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: cp-helm-charts
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: apps/cp-helm-charts
+    repoURL: https://github.com/lsst-sqre/argocd-efd
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+  ignoreDifferences:
+    - group: apps
+      kind: Service
+      name: cp-helm-charts-cp-zookeeper
+      namespace: cp-helm-charts
+      jsonPointers:
+        - "/spec/type"
