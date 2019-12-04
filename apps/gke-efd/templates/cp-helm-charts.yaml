@@ -25,9 +25,9 @@ spec:
     automated:
       prune: true
   ignoreDifferences:
-    - group: apps
+    - group: ""
       kind: Service
       name: cp-helm-charts-cp-zookeeper
       namespace: cp-helm-charts
       jsonPointers:
-        - "/spec/type"
+        - /spec/type
