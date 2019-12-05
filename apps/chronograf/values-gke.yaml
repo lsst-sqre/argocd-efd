@@ -3,7 +3,7 @@ chronograf:
   ##
   image:
     repository: "docker.io/chronograf"
-    tag: "1.7.15"
+    tag: "1.7.14"
     pullPolicy: "Always"
 
   ## Specify a service type
