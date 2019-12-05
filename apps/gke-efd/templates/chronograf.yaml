@@ -21,6 +21,9 @@ spec:
     path: apps/chronograf
     repoURL: https://github.com/lsst-sqre/argocd-efd
     targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values-gke.yaml
   syncPolicy:
     automated:
       prune: true

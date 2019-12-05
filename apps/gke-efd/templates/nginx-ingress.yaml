@@ -19,6 +19,9 @@ spec:
     path: apps/nginx-ingress
     repoURL: https://github.com/lsst-sqre/argocd-efd
     targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml
   syncPolicy:
     automated:
       prune: true
