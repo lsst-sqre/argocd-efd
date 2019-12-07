@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nginx-ingress
+spec:
+  finalizers:
+    - kubernetes
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-ingress
+spec:
+  destination:
+    namespace: nginx-ingress
+    server: {{ .Values.spec.destination.server }} 
+  project: default
+  source:
+    path: apps/nginx-ingress
+    repoURL: https://github.com/lsst-sqre/argocd-efd
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml
+  syncPolicy:
+    automated:
+      prune: true
+  ignoreDifferences:
+  - group: ""
+    kind: Service
+    jsonPointers:
+    # The Cluster IP is immutable; so we shouldn't look at differences there.
+    # If left out, we see the error message:
+    #   kubectl failed exit status 1: The Service
+    #   "nginx-ingress-controller-metrics" is invalid: spec.clusterIP: Invalid
+    #   value: "": field is immutable
+    # Credit: https://gist.github.com/kyohmizu/8ebc9c3dcadad6f22dd0246caad9b951
+    - /spec/clusterIP
