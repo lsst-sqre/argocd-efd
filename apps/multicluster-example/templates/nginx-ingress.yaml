@@ -13,8 +13,8 @@ metadata:
 spec:
   destination:
     namespace: nginx-ingress
-    server: {{ .Values.spec.destination.server }} 
-  project: default
+    server: {{ .Values.spec.destination.server }}
+  project: {{ .Values.spec.project }}
   source:
     path: apps/nginx-ingress
     repoURL: https://github.com/lsst-sqre/argocd-efd
