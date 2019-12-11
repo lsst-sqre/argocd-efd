@@ -1,5 +1,5 @@
 vault-secrets-operator:
-  environmentVars: 
+  environmentVars:
     - envName: VAULT_TOKEN
       secretName: vault-secrets-operator
       secretKey: VAULT_TOKEN
