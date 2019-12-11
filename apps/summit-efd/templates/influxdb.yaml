@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: influxdb
+spec:
+  finalizers:
+    - kubernetes
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: influxdb
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: influxdb
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: apps/influxdb
+    repoURL: https://github.com/lsst-sqre/argocd-efd
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values-summit.yaml
+  syncPolicy:
+    automated:
+      prune: true
