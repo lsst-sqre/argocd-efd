@@ -34,8 +34,8 @@ chronograf:
   ## OPTIONALLY you can set .Values.ingress.secretName to set which secret to use
   ##
   ingress:
-    enabled: false
-    tls: false
+    enabled: true
+    tls: true
     secretName: tls
     hostname: chronograf-summit-efd.lsst.codes
     annotations:
