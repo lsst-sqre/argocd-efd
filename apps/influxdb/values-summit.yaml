@@ -39,7 +39,7 @@ influxdb:
     ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
     ##   GKE, AWS & OpenStack)
     ##
-    storageClass: local-path 
+    storageClass: local-path
     accessMode: ReadWriteOnce
     size: 15Gi
 
@@ -79,10 +79,10 @@ influxdb:
       privileges: "WITH ALL PRIVILEGES"
 
   ingress:
-    enabled: false 
+    enabled: true
     tls: true
-    secretName: tls-certs
-    hostname: influxdb-gke-efd.lsst.codes
+    secretName: tls
+    hostname: influxdb-summit-efd.lsst.codes
     annotations:
       kubernetes.io/ingress.class: "nginx"
       nginx.ingress.kubernetes.io/ssl-redirect: "true"
@@ -101,6 +101,6 @@ influxdb:
       enabled: true
       auth_enabled: true
       max_row_limit: 0
-  
+
   backup:
     enabled: false
