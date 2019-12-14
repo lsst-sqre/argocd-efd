@@ -13,16 +13,16 @@ argocd app create gke-efd --dest-namespace argocd --dest-server https://kubernet
 argocd app sync gke-efd
 ```
 
-### Managing Secrets
+### Secrets
 
 The EFD application deploys the `vault-secrets-operator` which is configured to retrieve the right secrets from https://vault.lsst.codes. However, a Kubernetes secret containing the `VAULT_TOKEN` and the `VAULT_TOKEN_LEASE_DURATION` (in seconds) still needs to be created manually.
+
 
 ```
 export VAULT_TOKEN=
 export VAULT_TOKEN_LEASE_DURATION=
 
-cd apps/vault-secrets-operator/vault
-./make_vault_token_secret.sh | kubectl apply -f -
+$ kubectl create secret generic vault-secrets-operator --from-literal=VAULT_TOKEN=$VAULT_TOKEN --from-literal=VAULT_TOKEN_LEASE_DURATION=$VAULT_TOKEN_LEASE_DURATION --namespace vault-secrets-operator
 ```
 
 

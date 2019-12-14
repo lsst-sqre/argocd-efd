@@ -2,7 +2,7 @@ apiVersion: ricoberger.de/v1alpha1
 kind: VaultSecret
 metadata:
   name: tls
-  namespace: chronograf
+  namespace: influxdb
 spec:
-  path: secret/dm/square/efd/summit/tls
+  path: {{ .Values.path }}/tls
   type: Opaque
