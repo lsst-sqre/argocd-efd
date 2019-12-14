@@ -67,7 +67,7 @@ influxdb:
 
       ## The user name
       ## Default: "admin"
-      username: "admin"
+      username: ""
 
       ## User password
       ## single quotes must be escaped (\')
@@ -77,6 +77,8 @@ influxdb:
       ## User privileges
       ## Default: "WITH ALL PRIVILEGES"
       privileges: "WITH ALL PRIVILEGES"
+
+      existingSecret: influxdb-auth
 
   ingress:
     enabled: false 

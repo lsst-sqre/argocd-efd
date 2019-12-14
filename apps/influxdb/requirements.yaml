@@ -1,4 +1,4 @@
 dependencies:
 - name: influxdb
-  version: 3.0.2
-  repository: https://kubernetes-charts.storage.googleapis.com/ 
+  version: 3.0.3
+  repository: https://lsst-sqre.github.io/charts/ 
