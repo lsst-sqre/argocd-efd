@@ -23,7 +23,7 @@ spec:
     targetRevision: HEAD
     helm:
       valueFiles:
-        - values-gke.yaml
+        - values-summit.yaml
   syncPolicy:
     automated:
       prune: true
