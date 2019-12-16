@@ -9,7 +9,7 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-passthrough: "true"
 spec:
   rules:
-  - host: argocd-tucson-teststand.lsst.codes
+  - host: argocd-{{ .Values.env }}.lsst.codes
     http:
       paths:
       - backend:
