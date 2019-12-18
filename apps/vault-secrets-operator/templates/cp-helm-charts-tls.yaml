@@ -1,0 +1,8 @@
+apiVersion: ricoberger.de/v1alpha1
+kind: VaultSecret
+metadata:
+  name: tls
+  namespace: cp-helm-charts
+spec:
+  path: {{ .Values.path }}/tls
+  type: Opaque
