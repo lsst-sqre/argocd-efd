@@ -1,0 +1,11 @@
+---
+influxdb-sink:
+  image:
+    repository: lsstsqre/kafka-connect-manager
+    tag: 0.5.0
+    pullPolicy: Always
+
+  influxdb:
+    enabled: true
+    influxdbUrl: "https://influxdb-summit-efd.lsst.codes"
+    existingSecret: influxdb-auth
