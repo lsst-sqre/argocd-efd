@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: kapacitor
+  name: influxdb-sink
 spec:
   finalizers:
     - kubernetes
@@ -9,21 +9,21 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kapacitor
+  name: influxdb-sink
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: kapacitor
+    namespace: influxdb-sink
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: apps/kapacitor
+    path: apps/influxdb-sink
     repoURL: https://github.com/lsst-sqre/argocd-efd
     targetRevision: HEAD
     helm:
       valueFiles:
-        - values-summit.yaml
+        - values-{{ .Values.env }}.yaml
   syncPolicy:
     automated:
       prune: true

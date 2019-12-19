@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: influxdb-sink
+  name: cp-helm-charts
 spec:
   finalizers:
     - kubernetes
@@ -9,21 +9,28 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: influxdb-sink
+  name: cp-helm-charts
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: influxdb-sink
+    namespace: cp-helm-charts
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: apps/influxdb-sink
+    path: apps/cp-helm-charts
     repoURL: https://github.com/lsst-sqre/argocd-efd
     targetRevision: HEAD
     helm:
       valueFiles:
-        - values-summit.yaml
+        - values-{{ .Values.env }}.yaml
   syncPolicy:
     automated:
       prune: true
+  ignoreDifferences:
+    - group: ""
+      kind: Service
+      name: cp-helm-charts-cp-zookeeper
+      namespace: cp-helm-charts
+      jsonPointers:
+        - /spec/type

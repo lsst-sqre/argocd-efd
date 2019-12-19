@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: cp-helm-charts
+  name: chronograf
 spec:
   finalizers:
     - kubernetes
@@ -9,28 +9,21 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cp-helm-charts
+  name: chronograf
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: cp-helm-charts
+    namespace: chronograf
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: apps/cp-helm-charts
+    path: apps/chronograf
     repoURL: https://github.com/lsst-sqre/argocd-efd
     targetRevision: HEAD
     helm:
       valueFiles:
-        - values-summit.yaml
+        - values-{{ .Values.env }}.yaml
   syncPolicy:
     automated:
       prune: true
-  ignoreDifferences:
-    - group: ""
-      kind: Service
-      name: cp-helm-charts-cp-zookeeper
-      namespace: cp-helm-charts
-      jsonPointers:
-        - /spec/type

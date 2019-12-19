@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: chronograf
+  name: kapacitor
 spec:
   finalizers:
     - kubernetes
@@ -9,21 +9,21 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: chronograf
+  name: kapacitor
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: chronograf
+    namespace: kapacitor
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: apps/chronograf
+    path: apps/kapacitor
     repoURL: https://github.com/lsst-sqre/argocd-efd
     targetRevision: HEAD
     helm:
       valueFiles:
-        - values-gke.yaml
+        - values-{{ .Values.env }}.yaml
   syncPolicy:
     automated:
       prune: true
