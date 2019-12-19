@@ -1,0 +1,9 @@
+nginx-ingress:
+  controller:
+    # This adds the --enable-ssl-passthrough option to the nginx-ingresss-controller
+    # command line. That's need when configuring ArgoCD with nginx-ingress
+    # See https://argoproj.github.io/argo-cd/operator-manual/ingress/
+    extraArgs:
+      enable-ssl-passthrough: ""
+
+env: tucson-teststand
