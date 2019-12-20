@@ -2,7 +2,7 @@ apiVersion: ricoberger.de/v1alpha1
 kind: VaultSecret
 metadata:
   name: tls-certs
-  namespace: cp-helm-charts
+  namespace: argocd
 spec:
   path: {{ .Values.path }}/tls-certs
   type: Opaque

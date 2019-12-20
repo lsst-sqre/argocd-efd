@@ -36,7 +36,7 @@ chronograf:
   ingress:
     enabled: true
     tls: true
-    secretName: tls
+    secretName: tls-certs
     hostname: chronograf-summit-efd.lsst.codes
     annotations:
       kubernetes.io/ingress.class: "nginx"

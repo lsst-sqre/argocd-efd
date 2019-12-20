@@ -1,8 +1,8 @@
 apiVersion: ricoberger.de/v1alpha1
 kind: VaultSecret
 metadata:
-  name: tls
+  name: tls-certs
   namespace: influxdb
 spec:
-  path: {{ .Values.path }}/tls
+  path: {{ .Values.path }}/tls-certs
   type: Opaque

@@ -17,4 +17,4 @@ spec:
   tls:
   - hosts:
     - grpc-argocd-{{ .Values.env }}.lsst.codes
-    secretName: argocd-secret # do not change, this is provided by Argo CD
+    secretName: tls-certs

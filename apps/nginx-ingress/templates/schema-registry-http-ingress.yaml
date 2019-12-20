@@ -5,7 +5,6 @@ metadata:
   namespace: cp-helm-charts
   annotations:
     kubernetes.io/ingress.class: "nginx"
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
 spec:
   rules:
@@ -18,4 +17,4 @@ spec:
   tls:
   - hosts:
     - schema-registry-{{ .Values.env }}-efd.lsst.codes
-    secretName: tls
+    secretName: tls-certs
