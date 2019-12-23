@@ -22,10 +22,13 @@ Bootstrap an EFD deployment
 
 ``argocd-efd`` uses the `app of apps pattern <https://argoproj.github.io/argo-cd/operator-manual/cluster-bootstrapping/>`_ to bootstrap a new EFD deployment.
 
-The following will bootstrap an EFD deployment at the ``summit``. It assumes that ``kubectl`` is set to the right context and that `Argo CD is running on the destination cluster <https://sqr-031.lsst.io>`_.
+The following will bootstrap an EFD deployment at the ``summit``. It assumes that ``kubectl`` is set to the right context and that `Argo CD is running on the destination cluster <https://sqr-031.lsst.io>`_. Note that we connect to Argo CD on `localhot:8080` because `nginx-ingress` is deployed as part of the ``efd`` app.
 
 .. code-block::
 
+  kubectl port-forward svc/argocd-server -n argocd 8080:443
+
+  argocd login localhot:8080
   argocd app create efd --dest-namespace argocd --dest-server https://kubernetes.default.svc --repo https://github.com/lsst-sqre/argocd-efd.git --path apps/efd --helm-set env=summit
   argocd app sync efd
 
