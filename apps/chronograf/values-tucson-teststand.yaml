@@ -37,7 +37,7 @@ chronograf:
     enabled: true
     tls: true
     secretName: tls-certs
-    hostname: chronograf-tuscon-teststand-efd.lsst.codes
+    hostname: chronograf-tucson-teststand-efd.lsst.codes
     annotations:
       kubernetes.io/ingress.class: "nginx"
       # kubernetes.io/tls-acme: "true"
