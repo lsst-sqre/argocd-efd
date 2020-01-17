@@ -1,0 +1,189 @@
+---
+cp-helm-charts:
+  ## ------------------------------------------------------
+  ## Zookeeper
+  ## ------------------------------------------------------
+  cp-zookeeper:
+    enabled: true
+    servers: 3
+    image: confluentinc/cp-zookeeper
+    imageTag: 5.3.1
+    ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
+    ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+    imagePullSecrets:
+    #  - name: "regcred"
+    heapOptions: "-Xms512M -Xmx512M"
+    persistence:
+      enabled: true
+      ## The size of the PersistentVolume to allocate to each Zookeeper Pod in the StatefulSet. For
+      ## production servers this number should likely be much larger.
+      ##
+      ## Size for Data dir, where ZooKeeper will store the in-memory database snapshots.
+      dataDirSize: 15Gi
+      dataDirStorageClass: CHANGE_ME
+
+      ## Size for data log dir, which is a dedicated log device to be used, and helps avoid competition between logging and snaphots.
+      dataLogDirSize: 15Gi
+      dataLogDirStorageClass: CHANGE_ME
+    resources: {}
+    ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
+    ## and remove the curly braces after 'resources:'
+    #  limits:
+    #   cpu: 100m
+    #   memory: 128Mi
+    #  requests:
+    #   cpu: 100m
+    #   memory: 128Mi
+
+  ## ------------------------------------------------------
+  ## Kafka
+  ## ------------------------------------------------------
+  cp-kafka:
+    enabled: true
+    brokers: 3
+    image: confluentinc/cp-enterprise-kafka
+    imageTag: 5.3.1
+    ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
+    ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+    imagePullSecrets:
+    #  - name: "regcred"
+    heapOptions: "-Xms512M -Xmx512M"
+    persistence:
+      enabled: true
+      size: 15Gi
+      storageClass: CHANGE_ME
+      disksPerBroker: 1
+    resources: {}
+    ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
+    ## and remove the curly braces after 'resources:'
+    #  limits:
+    #   cpu: 100m
+    #   memory: 128Mi
+    #  requests:
+    #   cpu: 100m
+    #   memory: 128Mi
+    ## Enable external access to the kafka cluster through NodePort
+    nodeport:
+      enabled: true
+
+    loadbalancers: 1
+
+    loadbalancer:
+      enabled: false
+      port: 9094
+
+    ## Kafka Server properties
+    ## ref: https://kafka.apache.org/documentation/#configuration
+    configurationOverrides:
+      offsets.retention.minutes: 1440
+      log.retention.hours: 24
+
+
+  ## ------------------------------------------------------
+  ## Schema Registry
+  ## ------------------------------------------------------
+  cp-schema-registry:
+    enabled: true
+    image: confluentinc/cp-schema-registry
+    imageTag: 5.3.1
+    ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
+    ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+    imagePullSecrets:
+    #  - name: "regcred"
+    heapOptions: "-Xms512M -Xmx512M"
+    resources: {}
+    ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
+    ## and remove the curly braces after 'resources:'
+    #  limits:
+    #   cpu: 100m
+    #   memory: 128Mi
+    #  requests:
+    #   cpu: 100m
+    #   memory: 128Mi
+
+  ## ------------------------------------------------------
+  ## REST Proxy
+  ## ------------------------------------------------------
+  cp-kafka-rest:
+    enabled: true
+    image: confluentinc/cp-kafka-rest
+    imageTag: 5.3.1
+    ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
+    ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+    imagePullSecrets:
+    #  - name: "regcred"
+    heapOptions: "-Xms512M -Xmx512M"
+    resources: {}
+    ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
+    ## and remove the curly braces after 'resources:'
+    #  limits:
+    #   cpu: 100m
+    #   memory: 128Mi
+    #  requests:
+    #   cpu: 100m
+    #   memory: 128Mi
+
+  ## ------------------------------------------------------
+  ## Kafka Connect
+  ## ------------------------------------------------------
+  cp-kafka-connect:
+    enabled: true
+    # This image adds specific connectors used by the EFD application
+    image: lsstsqre/cp-kafka-connect
+    imageTag: 5.3.1
+    ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
+    ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+    imagePullSecrets:
+    #  - name: "regcred"
+
+    heapOptions: "-Xms512M -Xmx512M"
+    resources: {}
+    ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
+    ## and remove the curly braces after 'resources:'
+    #  limits:
+    #   cpu: 100m
+    #   memory: 128Mi
+    #  requests:
+    #   cpu: 100m
+    #   memory: 128Mi
+
+    configurationOverrides:
+      "plugin.path": "/usr/share/java,/etc/landoop/jars/lib"
+
+
+  ## ------------------------------------------------------
+  ## KSQL Server
+  ## ------------------------------------------------------
+  cp-ksql-server:
+    enabled: true
+    image: confluentinc/cp-ksql-server
+    imageTag: 5.3.1
+    ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
+    ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+    imagePullSecrets:
+    #  - name: "regcred"
+    heapOptions: "-Xms512M -Xmx512M"
+    ksql:
+      headless: false
+
+  ## ------------------------------------------------------
+  ## Control Center
+  ## ------------------------------------------------------
+  cp-control-center:
+    enabled: false
+    image: confluentinc/cp-enterprise-control-center
+    imageTag: 5.3.1
+    ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
+    ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+    imagePullSecrets:
+    #  - name: "regcred"
+    heapOptions: "-Xms512M -Xmx512M"
+    resources: {}
+    ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
+    ## and remove the curly braces after 'resources:'
+    #  limits:
+    #   cpu: 100m
+    #   memory: 128Mi
+    #  requests:
+    #   cpu: 100m
+    #   memory: 128Mi
