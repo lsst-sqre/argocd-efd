@@ -53,7 +53,8 @@ For that, a Kubernetes secret containing the `VAULT_TOKEN` and the `VAULT_TOKEN_
 Environments
 ------------
 
-``argocd-efd`` manages the deployment of the EFD on multiple environments. The possible environments are ``summit``, ``tucson-teststand``, ``ncsa-teststand``, ``ldf``, and ``gke``.
+``argocd-efd`` manages the deployment of the EFD on multiple environments. The possible environments are ``summit``, ``tucson-teststand``, ``ncsa-teststand``, ``ldf``, and ``gke``. Configuration values for the apps are named after the environment ``values-<environment>.yaml``.
+
 
 
 Types of deployment
@@ -84,11 +85,31 @@ An aggregator EFD has in addition:
 - oracle-sink
 - parket-sink
 
-Naming convention
-^^^^^^^^^^^^^^^^^
 
-The Argo CD parent app, used to bootstrap the deployment is named ``efd`` in each environment.
+Service names
+^^^^^^^^^^^^^
 
-Configuration values for the apps are named after the environment ``values-<environment>.yaml``.
+Service names for the apps follow the convention ``<app>-<environment>-efd.lsst.codes``, for example, `chronograf-summit-efd.lsst.codes <https://chronograf-summit-efd.lsst.codes>`_.
 
-Finally, service names for the apps follow the convention ``<app>-<environment>-efd.lsst.codes``, for example, `chronograf-summit-efd.lsst.codes <https://chronograf-summit-efd.lsst.codes>`_.
+DNS records are created manually on AWS Route53.
+
+Set your AWS credentials
+
+.. code-block::
+
+  export AWS_ACCESS_KEY_ID=
+  export AWS_SECRET_ACCESS_KEY
+
+
+Get the LoadBalancer Ingress IP address from ``kubectl describe service nginx-ingress-controller -n nginx-ingress``, and then use the following to create the DNS records:
+
+.. code-block::
+
+  export LB_IP=<LoadBalancer Ingress IP address>
+  export ENV=<environment>
+
+  cd route53
+  create_dns_record.sh influxdb $ENV-efd $LB_IP
+  create_dns_record.sh chronograf $ENV-efd $LB_IP
+  create_dns_record.sh schema-registry $ENV-efd $LB_IP
+  create_dns_record.sh kafka-0 $ENV-efd $LB_IP
