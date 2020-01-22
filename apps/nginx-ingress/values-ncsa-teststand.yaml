@@ -5,5 +5,13 @@ nginx-ingress:
     # See https://argoproj.github.io/argo-cd/operator-manual/ingress/
     extraArgs:
       enable-ssl-passthrough: ""
+    service:
+      type: NodePort
+      nordePorts:
+        http: 30080
+        https: 30443
+        tcp:
+          80: 30080
+          443: 30443
 
 env: ncsa-teststand
