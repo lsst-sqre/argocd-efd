@@ -25,9 +25,9 @@ chronograf:
     ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
     ##   GKE, AWS & OpenStack)
     ##
-    storageClass: CHANGE_ME
+    storageClass: local-path
     accessMode: ReadWriteOnce
-    size: 8Gi
+    size: 50Gi
 
   ## Configure the ingress object to hook into existing infastructure
   ## ref : http://kubernetes.io/docs/user-guide/ingress/

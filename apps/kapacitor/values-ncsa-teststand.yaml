@@ -25,9 +25,9 @@ kapacitor:
     ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
     ##   GKE, AWS & OpenStack)
     ##
-    storageClass: CHANGE_ME
+    storageClass: local-path
     accessMode: ReadWriteOnce
-    size: 8Gi
+    size: 50Gi
     # existingClaim: ""
 
   ## Set the environment variables for kapacitor (or anything else you want to use)

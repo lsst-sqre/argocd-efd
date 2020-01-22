@@ -39,9 +39,9 @@ influxdb:
     ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
     ##   GKE, AWS & OpenStack)
     ##
-    storageClass: CHANGE_ME
+    storageClass: local-path
     accessMode: ReadWriteOnce
-    size: 500Gi
+    size: 50Gi
 
   ## Create default user through Kubernetes job
   ## Defaults indicated below
