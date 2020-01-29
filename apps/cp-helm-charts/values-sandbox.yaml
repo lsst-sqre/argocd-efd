@@ -20,11 +20,11 @@ cp-helm-charts:
       ##
       ## Size for Data dir, where ZooKeeper will store the in-memory database snapshots.
       dataDirSize: 15Gi
-      dataDirStorageClass: pd-ssd
+      dataDirStorageClass: standard
 
       ## Size for data log dir, which is a dedicated log device to be used, and helps avoid competition between logging and snaphots.
       dataLogDirSize: 15Gi
-      dataLogDirStorageClass: pd-ssd
+      dataLogDirStorageClass: standard
     resources: {}
     ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
     ## and remove the curly braces after 'resources:'
@@ -51,7 +51,7 @@ cp-helm-charts:
     persistence:
       enabled: true
       size: 15Gi
-      storageClass: pd-ssd
+      storageClass: standard
       disksPerBroker: 1
     resources: {}
     ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
@@ -65,8 +65,8 @@ cp-helm-charts:
     ## Enable external access to the kafka cluster through NodePort
     nodeport:
       enabled: false
-   
-    loadbalancers: 3
+
+    loadbalancers: 1
 
     loadbalancer:
       enabled: true
@@ -170,7 +170,7 @@ cp-helm-charts:
   ## Control Center
   ## ------------------------------------------------------
   cp-control-center:
-    enabled: true
+    enabled: false
     image: confluentinc/cp-enterprise-control-center
     imageTag: 5.3.1
     ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.

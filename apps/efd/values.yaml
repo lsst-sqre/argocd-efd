@@ -4,5 +4,5 @@ spec:
   source:
     repoURL: https://github.com/lsst-sqre/argocd-efd
 
-## Possible environments are summit, tucson-teststand, ncsa-teststand, and gke
+## Possible environments are summit, tucson-teststand, ncsa-teststand, and sandbox
 # env: ""

@@ -41,7 +41,7 @@ influxdb:
     ##
     # storageClass: "-"
     accessMode: ReadWriteOnce
-    size: 15Gi
+    size: 100Gi
 
   ## Create default user through Kubernetes job
   ## Defaults indicated below
@@ -81,10 +81,10 @@ influxdb:
       existingSecret: influxdb-auth
 
   ingress:
-    enabled: false 
+    enabled: true
     tls: true
     secretName: tls-certs
-    hostname: influxdb-gke-efd.lsst.codes
+    hostname: influxdb-sandbox-efd.lsst.codes
     annotations:
       kubernetes.io/ingress.class: "nginx"
       nginx.ingress.kubernetes.io/ssl-redirect: "true"
@@ -103,6 +103,6 @@ influxdb:
       enabled: true
       auth_enabled: true
       max_row_limit: 0
-  
+
   backup:
     enabled: false

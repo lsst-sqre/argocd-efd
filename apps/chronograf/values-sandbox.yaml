@@ -34,10 +34,10 @@ chronograf:
   ## OPTIONALLY you can set .Values.ingress.secretName to set which secret to use
   ##
   ingress:
-    enabled: false
-    tls: false
+    enabled: true
+    tls: true
     secretName: tls-certs
-    hostname: chronograf-gke-efd.lsst.codes
+    hostname: chronograf-sandbox-efd.lsst.codes
     annotations:
       kubernetes.io/ingress.class: "nginx"
       # kubernetes.io/tls-acme: "true"
@@ -47,12 +47,11 @@ chronograf:
   ##
   oauth:
     # Need to set to true to use any of the oauth options
-    enabled: false
-    # Used for JWT to support running multiple copies of Chronograf
-    token_secret: CHANGE_ME
+    enabled: true
+    ## Assumes that a kubernetes secret named chronograf-oauth
+    ## exists and contains the required secrets to configure the
+    ## GH OAuth Provider: token_secret, gh_client_id,
+    ## gh_client_secret and gh_orgs.
+    existingSecret: chronograf-oauth
     github:
-      enabled: false
-      client_id: CHANGE_ME
-      client_secret: CHANGE_ME
-      # This is a comma separated list of GH organizations (OPTIONAL)
-      gh_orgs: CHANGE_ME
+      enabled: true

@@ -12,8 +12,8 @@ TL;DR
      - https://argocd-summit.lsst.codes
    * - Tucson Teststand EFD
      - https://argocd-tucson-teststand.lsst.codes
-   * - NCSA Teststand EFD
-     - https://argocd-ncsa-teststand.lsst.codes
+   * - Sandbox EFD
+     - https://argocd-sandbox.lsst.codes
 
 
 
@@ -22,7 +22,7 @@ Bootstrap an EFD deployment
 
 ``argocd-efd`` uses the `app of apps pattern <https://argoproj.github.io/argo-cd/operator-manual/cluster-bootstrapping/>`_ to bootstrap a new EFD deployment.
 
-The following will bootstrap an EFD deployment at the ``summit``. It assumes that ``kubectl`` is set to the right context and that `Argo CD is running on the destination cluster <https://sqr-031.lsst.io>`_. Note that we connect to Argo CD on `localhot:8080` because `nginx-ingress` is deployed as part of the ``efd`` app.
+The following will bootstrap an EFD deployment at the ``summit``. It assumes that ``kubectl`` is set to the right context and that `Argo CD is running on the destination cluster <https://sqr-031.lsst.io>`_. Note that we connect to Argo CD on `localhot:8080` initially because `nginx-ingress` is deployed as part of the ``efd`` app.
 
 .. code-block::
 
@@ -53,16 +53,8 @@ For that, a Kubernetes secret containing the `VAULT_TOKEN` and the `VAULT_TOKEN_
 Environments
 ------------
 
-``argocd-efd`` manages the deployment of the EFD on multiple environments. The possible environments are ``summit``, ``tucson-teststand``, ``ncsa-teststand``, ``ldf``, and ``gke``. Configuration values for the apps are named after the environment ``values-<environment>.yaml``.
+``argocd-efd`` manages the deployment of the EFD on multiple environments. The possible environments are ``summit``, ``tucson-teststand``, ``ncsa-teststand``, and ``sandbox``. Configuration values for the apps are named after the environment ``values-<environment>.yaml``.
 
-
-
-Types of deployment
-^^^^^^^^^^^^^^^^^^^
-
-There are two types of deployment, the `source EFD and the aggregator EFD <https://sqr-034.lsst.io/#introduction>`_.
-
-A source EFD is deployed to the  ``summit``, ``tucson-teststand``, and ``ncsa-teststand`` environments, while an aggregator EFD is deployed to the ``ldf`` and ``gke`` environments.
 
 
 EFD apps
@@ -75,15 +67,13 @@ A source EFD has the following apps:
 - cp-helm-charts
 - influxb-sink
 - influxdb
+- chronograf
 - kapacitor
-- telegraf
-
-An aggregator EFD has in addition:
-
-- aggregator
-- replicator
-- oracle-sink
-- parket-sink
+- telegraf (work in progress)
+- aggregator (work in progress)
+- replicator (work in progress)
+- oracle-sink (work in progress)
+- parket-sink (work in progress)
 
 
 Service names

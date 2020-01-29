@@ -38,7 +38,7 @@ kapacitor:
   # envVars:
   #   KAPACITOR_SLACK_ENABLED: true
   #   KAPACITOR_SLACK_URL: "http://slack.com/xxxxx/xxxxx/xxxx/xxxxxxx"
-  
+
   ## Set the URL of InfluxDB instance to create subscription on
   ## ref: https://docs.influxdata.com/kapacitor/v1.1/introduction/getting_started/
   ##
