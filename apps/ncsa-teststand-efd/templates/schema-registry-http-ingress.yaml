@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: schema-registry-http-ingress
+  namespace: cp-helm-charts
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          serviceName: cp-helm-charts-cp-schema-registry
+          servicePort: 8081
+    host:  lsst-schema-registry-nts-efd.ncsa.illinois.edu
+  tls:
+  - hosts:
+    -  lsst-schema-registry-nts-efd.ncsa.illinois.edu
+    secretName: tls-certs

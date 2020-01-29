@@ -84,7 +84,7 @@ influxdb:
     enabled: true
     tls: true
     secretName: tls-certs
-    hostname: influxdb-ncsa-teststand-efd.lsst.codes
+    hostname: lsst-influxdb-nts-efd.ncsa.illinois.edu
     annotations:
       kubernetes.io/ingress.class: "nginx"
       nginx.ingress.kubernetes.io/ssl-redirect: "true"
