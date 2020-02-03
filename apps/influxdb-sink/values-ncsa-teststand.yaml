@@ -1,11 +1,11 @@
 ---
-influxdb-sink:
+kafka-connect-manager:
   image:
     repository: lsstsqre/kafka-connect-manager
-    tag: 0.5.0
+    tag: v0.5.0
     pullPolicy: Always
 
   influxdb:
     enabled: true
-    influxdbUrl: "https://influxdb-ncsa-teststand-efd.lsst.codes"
+    influxdbUrl: "https://lsst-influxdb-nts-efd.ncsa.illinois.edu"
     existingSecret: influxdb-auth
