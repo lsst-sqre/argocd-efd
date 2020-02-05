@@ -7,7 +7,7 @@ vault-secrets-operator:
       secretName: vault-secrets-operator
       secretKey: VAULT_TOKEN_LEASE_DURATION
   vault:
-    address: "https://vault.lsst.codes"
+    address: "https://vault-1.lsst.codes"
 
 # Path for the secret on Vault
 path: secret/dm/square/efd/sandbox
