@@ -187,3 +187,4 @@ cp-helm-charts:
     #  requests:
     #   cpu: 100m
     #   memory: 128Mi
+env: tucson-teststand

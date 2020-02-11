@@ -1,4 +1,0 @@
-apiVersion: v1
-description: Parent application to bootstrap and EFD deployment
-name: efd-ncsa-teststand
-version: 0.1.0

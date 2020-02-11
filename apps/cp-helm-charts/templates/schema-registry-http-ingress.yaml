@@ -13,8 +13,18 @@ spec:
       - backend:
           serviceName: cp-helm-charts-cp-schema-registry
           servicePort: 8081
+    {{if eq .Values.env "ncsa-teststand" -}}
+    # The DNS is managed by NCSA breaking our convention for
+    # naming the services
+    host: lsst-schema-registry-nts-efd.ncsa.illinois.edu
+    {{- else -}}
     host: schema-registry-{{ .Values.env }}-efd.lsst.codes
+    {{- end}}
   tls:
   - hosts:
+    {{if eq .Values.env "ncsa-teststand" -}}
+    -  lsst-schema-registry-nts-efd.ncsa.illinois.edu
+    {{- else -}}
     - schema-registry-{{ .Values.env }}-efd.lsst.codes
+    {{- end}}
     secretName: tls-certs

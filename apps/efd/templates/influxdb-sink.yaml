@@ -24,4 +24,3 @@ spec:
     helm:
       valueFiles:
         - values-{{ .Values.env }}.yaml
-  syncPolicy:

@@ -24,7 +24,6 @@ spec:
     helm:
       valueFiles:
         - values-{{ .Values.env }}.yaml
-  syncPolicy:
   ignoreDifferences:
     - group: ""
       kind: Service

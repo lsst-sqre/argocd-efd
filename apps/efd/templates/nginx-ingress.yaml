@@ -1,3 +1,4 @@
+{{- if ne .Values.env "ncsa-teststand" -}}
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -21,8 +22,7 @@ spec:
     targetRevision: HEAD
     helm:
       valueFiles:
-        - values-{{ .Values.env }}.yaml
-  syncPolicy:
+        - values.yaml
   ignoreDifferences:
   - group: ""
     kind: Service
@@ -34,3 +34,4 @@ spec:
     #   value: "": field is immutable
     # Credit: https://gist.github.com/kyohmizu/8ebc9c3dcadad6f22dd0246caad9b951
     - /spec/clusterIP
+{{- end -}}
