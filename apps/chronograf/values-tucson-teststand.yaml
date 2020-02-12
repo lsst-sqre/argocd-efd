@@ -48,8 +48,11 @@ chronograf:
     enabled: true
     ## Assumes that a kubernetes secret named chronograf-oauth
     ## exists and contains the required secrets to configure the
-    ## GH OAuth Provider: token_secret, gh_client_id, 
+    ## GH OAuth Provider: token_secret, gh_client_id,
     ## gh_client_secret and gh_orgs.
     existingSecret: chronograf-oauth
     github:
-      enabled: true 
+      enabled: true
+
+## Environment where the EFD is deployed
+env: tucson-teststand

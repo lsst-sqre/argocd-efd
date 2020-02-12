@@ -186,5 +186,7 @@ cp-helm-charts:
     #   memory: 128Mi
     #  requests:
     #   cpu: 100m
-    #   memory: 128Mi
+    #   memory: 128
+
+## Environment where the EFD is deployed
 env: sandbox

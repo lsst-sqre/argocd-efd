@@ -2,7 +2,7 @@ apiVersion: ricoberger.de/v1alpha1
 kind: VaultSecret
 metadata:
   name: tls-certs
-  namespace: cp-helm-charts
+  namespace: influxdb
 spec:
-  path: {{ .Values.path }}/tls-certs
+  path: secret/dm/square/efd/{{ .Values.env }}/tls-certs
   type: Opaque

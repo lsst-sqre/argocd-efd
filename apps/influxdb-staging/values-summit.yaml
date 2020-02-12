@@ -107,5 +107,5 @@ influxdb:
   backup:
     enabled: false
 
-# Path for secrets on Vault
-path: secret/dm/square/efd/summit
+## Environment where the EFD is deployed
+env: summit

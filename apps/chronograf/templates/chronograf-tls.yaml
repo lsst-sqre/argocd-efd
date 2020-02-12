@@ -1,8 +1,8 @@
 apiVersion: ricoberger.de/v1alpha1
 kind: VaultSecret
 metadata:
-  name: chronograf-oauth
+  name: tls-certs
   namespace: chronograf
 spec:
-  path: {{ .Values.path }}/chronograf-oauth
+  path: secret/dm/square/efd/{{ .Values.env }}/tls-certs
   type: Opaque

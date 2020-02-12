@@ -9,3 +9,6 @@ kafka-connect-manager:
     enabled: true
     influxdbUrl: "https://lsst-influxdb-nts-efd.ncsa.illinois.edu"
     existingSecret: influxdb-auth
+
+## Environment where the EFD is deployed
+env: ncsa-teststand

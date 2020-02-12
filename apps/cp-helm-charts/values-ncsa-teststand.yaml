@@ -187,4 +187,6 @@ cp-helm-charts:
     #  requests:
     #   cpu: 100m
     #   memory: 128Mi
-value: ncsa-teststand
+
+## Environment where the EFD is deployed
+env: ncsa-teststand

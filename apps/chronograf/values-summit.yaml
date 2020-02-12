@@ -53,3 +53,6 @@ chronograf:
     existingSecret: chronograf-oauth
     github:
       enabled: true
+
+## Environment where the EFD is deployed
+env: summit

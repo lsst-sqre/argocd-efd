@@ -45,3 +45,6 @@ kapacitor:
   influxURL: http://influxdb-0.influxdb.influxdb.svc.cluster.local:8086
 
   existingSecret: influxdb-auth
+
+## Environment where the EFD is deployed
+env: tucson-teststand

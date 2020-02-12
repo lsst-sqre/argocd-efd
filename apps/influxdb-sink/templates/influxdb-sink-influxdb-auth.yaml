@@ -2,7 +2,7 @@ apiVersion: ricoberger.de/v1alpha1
 kind: VaultSecret
 metadata:
   name: influxdb-auth
-  namespace: kapacitor
+  namespace: influxdb-sink
 spec:
-  path: {{ .Values.path }}/influxdb-auth
+  path: secret/dm/square/efd/{{ .Values.env }}/influxdb-auth
   type: Opaque

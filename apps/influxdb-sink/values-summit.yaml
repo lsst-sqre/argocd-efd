@@ -9,3 +9,6 @@ kafka-connect-manager:
     enabled: true
     influxdbUrl: "https://influxdb-summit-efd.lsst.codes"
     existingSecret: influxdb-auth
+
+## Environment where the EFD is deployed
+env: summit

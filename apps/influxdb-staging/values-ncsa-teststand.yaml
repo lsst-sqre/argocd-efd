@@ -39,9 +39,9 @@ influxdb:
     ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
     ##   GKE, AWS & OpenStack)
     ##
-    # storageClass: "-"
+    storageClass: local-path
     accessMode: ReadWriteOnce
-    size: 100Gi
+    size: 15Gi
 
   ## Create default user through Kubernetes job
   ## Defaults indicated below
@@ -84,7 +84,7 @@ influxdb:
     enabled: true
     tls: true
     secretName: tls-certs
-    hostname: influxdb-staging-sandbox-efd.lsst.codes
+    hostname: influxdb-staging-summit-efd.lsst.codes
     annotations:
       kubernetes.io/ingress.class: "nginx"
       nginx.ingress.kubernetes.io/ssl-redirect: "true"
@@ -108,4 +108,4 @@ influxdb:
     enabled: false
 
 ## Environment where the EFD is deployed
-env: sandbox
+env: ncsa-teststand

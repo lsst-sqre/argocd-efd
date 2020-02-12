@@ -43,3 +43,6 @@ kapacitor:
   ## ref: https://docs.influxdata.com/kapacitor/v1.1/introduction/getting_started/
   ##
   influxURL: http://influxdb-influxdb:8086
+
+## Environment where the EFD is deployed
+env: sandbox
