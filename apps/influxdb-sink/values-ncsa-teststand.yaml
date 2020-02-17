@@ -2,12 +2,14 @@
 kafka-connect-manager:
   image:
     repository: lsstsqre/kafka-connect-manager
-    tag: v0.5.0
+    tag: v0.6.0
     pullPolicy: Always
 
   influxdb:
     enabled: true
     influxdbUrl: "https://lsst-influxdb-nts-efd.ncsa.illinois.edu"
+    database: "efd"
+    filter: "lsst.sal.*"
     existingSecret: influxdb-auth
 
 ## Environment where the EFD is deployed

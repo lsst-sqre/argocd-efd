@@ -130,7 +130,7 @@ cp-helm-charts:
     enabled: true
     # This image adds specific connectors used by the EFD application
     image: lsstsqre/cp-kafka-connect
-    imageTag: 5.3.1
+    imageTag: 5.3.2
     ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
     ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
     imagePullSecrets:
