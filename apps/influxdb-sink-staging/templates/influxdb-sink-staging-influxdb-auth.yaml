@@ -1,0 +1,8 @@
+apiVersion: ricoberger.de/v1alpha1
+kind: VaultSecret
+metadata:
+  name: influxdb-auth
+  namespace: influxdb-sink-staging
+spec:
+  path: secret/dm/square/efd/{{ .Values.env }}/influxdb-auth
+  type: Opaque
