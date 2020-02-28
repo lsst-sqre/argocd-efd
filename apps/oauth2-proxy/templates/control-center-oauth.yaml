@@ -1,0 +1,8 @@
+apiVersion: ricoberger.de/v1alpha1
+kind: VaultSecret
+metadata:
+  name: control-center-oauth
+  namespace: oauth2-proxy
+spec:
+  path: secret/dm/square/efd/{{ .Values.env }}/control-center-oauth
+  type: Opaque
