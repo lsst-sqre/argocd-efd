@@ -10,7 +10,7 @@ kafka-connect-manager:
     name: influxdb-sink-test-partitioning
     influxdbUrl: "https://influxdb-summit-efd.lsst.codes"
     database: "efd-test-partitioning"
-    filter: "lsst.sal.ATCamera.wreb"
+    filter: "lsst.sal.MTM2.*"
     tasks: 10
     existingSecret: influxdb-auth
 
