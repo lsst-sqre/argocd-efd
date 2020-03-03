@@ -7,11 +7,11 @@ kafka-connect-manager:
 
   influxdb:
     enabled: true
-    name: influxdb-sink-test-timestamp
+    name: influxdb-sink-test-partitioning
     influxdbUrl: "https://influxdb-summit-efd.lsst.codes"
-    database: "efd-test-timestamp"
-    filter: "lsst.sal.*"
-    timestamp: private_sndStamp
+    database: "efd-test-partitioning"
+    filter: "lsst.sal.ATCamera.wreb"
+    tasks: 10
     existingSecret: influxdb-auth
 
 ## Environment where the EFD is deployed
