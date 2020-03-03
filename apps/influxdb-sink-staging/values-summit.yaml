@@ -2,7 +2,7 @@
 kafka-connect-manager:
   image:
     repository: lsstsqre/kafka-connect-manager
-    tag: v0.6.0
+    tag: tickets-DM-23575
     pullPolicy: Always
 
   influxdb:
