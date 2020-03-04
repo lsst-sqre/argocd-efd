@@ -11,7 +11,8 @@ kafka-connect-manager:
     influxdbUrl: "https://influxdb-summit-efd.lsst.codes"
     database: "efd"
     filter: "lsst.sal.*"
-    tasks: 10
+    tasks: 1
+    timestamp: private_sndStamp
     existingSecret: influxdb-auth
 
 ## Environment where the EFD is deployed
