@@ -12,6 +12,7 @@ kafka-connect-manager:
     database: "efd-test-partitioning"
     filter: "lsst.sal.MTM2.*"
     tasks: 10
+    timestamp: private_sndStamp
     existingSecret: influxdb-auth
 
 ## Environment where the EFD is deployed
