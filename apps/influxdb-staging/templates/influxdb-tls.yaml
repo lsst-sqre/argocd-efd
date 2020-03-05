@@ -1,0 +1,8 @@
+apiVersion: ricoberger.de/v1alpha1
+kind: VaultSecret
+metadata:
+  name: tls-certs
+  namespace: influxdb-staging
+spec:
+  path: secret/dm/square/efd/{{ .Values.env }}/tls-certs
+  type: Opaque
