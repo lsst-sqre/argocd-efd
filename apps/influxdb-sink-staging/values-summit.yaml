@@ -7,7 +7,7 @@ kafka-connect-manager:
 
   influxdb:
     enabled: true
-    name: influxdb-sink-test-partitioning
+    name: influxdb-sink-staging
     influxdbUrl: "https://influxdb-staging-summit-efd.lsst.codes"
     database: "efd-test-partitioning"
     filter: "lsst.sal.MTM2.*"
