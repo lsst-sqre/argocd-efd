@@ -11,7 +11,7 @@ kafka-connect-manager:
     influxdbUrl: "http://influxdb-staging.influxdb-staging.svc.cluster.local:8086"
     database: "efd-test-partitioning"
     filter: "lsst.sal.MTM2.*"
-    tasks: 46
+    tasks: 1
     existingSecret: influxdb-auth
 
 ## Environment where the EFD is deployed

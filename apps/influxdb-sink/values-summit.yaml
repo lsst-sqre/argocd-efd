@@ -11,7 +11,7 @@ kafka-connect-manager:
     influxdbUrl: "http://influxdb-0.influxdb.influxdb.svc.cluster.local:8086"
     database: "efd"
     filter: "lsst.sal.*"
-    tasks: 1
+    tasks: 36
     timestamp: private_sndStamp
     existingSecret: influxdb-auth
 
