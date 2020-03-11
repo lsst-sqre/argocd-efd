@@ -9,4 +9,4 @@ spec:
 ## This parameter is usually set via the `argocd app create command` see
 ## https://github.com/lsst-sqre/argocd-efd
 
-# env: ""
+env: "ncsa-int"
