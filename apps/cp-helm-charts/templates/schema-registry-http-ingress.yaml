@@ -24,6 +24,8 @@ spec:
   - hosts:
     {{if eq .Values.env "ncsa-teststand" -}}
     -  lsst-schema-registry-nts-efd.ncsa.illinois.edu
+    {{- else if eq .Values.env "ncsa-int" -}}
+    -  lsst-schema-registry-int-efd.ncsa.illinois.edu
     {{- else -}}
     - schema-registry-{{ .Values.env }}-efd.lsst.codes
     {{- end}}

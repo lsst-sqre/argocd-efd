@@ -1,3 +1,5 @@
+{{- if ne .Values.env "ncsa-int" -}}
+# Argo CD is already deployed on ncsa-int
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -40,3 +42,4 @@ spec:
     - argocd-{{ .Values.env }}.lsst.codes
     {{- end}}
     secretName: tls-certs
+{{- end -}}

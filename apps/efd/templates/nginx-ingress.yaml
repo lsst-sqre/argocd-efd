@@ -1,4 +1,5 @@
-{{- if ne .Values.env "ncsa-teststand" -}}
+{{- if or (ne .Values.env "ncsa-teststand") (ne .Values.env "ncsa-int") -}}
+# nginx-ingress is already deployed on ncsa-teststand and ncsa-int
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
