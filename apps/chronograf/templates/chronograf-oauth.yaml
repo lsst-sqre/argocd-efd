@@ -4,5 +4,9 @@ metadata:
   name: chronograf-oauth
   namespace: chronograf
 spec:
+  {{- if eq .Values.env "ncsa-int" }}
+  path: secret/k8s_operator/lsst-lsp-int.ncsa.illinois.edu/efd/chronograf-oauth
+  {{- else -}}
   path: secret/dm/square/efd/{{ .Values.env }}/chronograf-oauth
+  {{- end }}
   type: Opaque
