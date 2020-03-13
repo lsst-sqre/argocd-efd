@@ -64,12 +64,12 @@ cp-helm-charts:
     #   memory: 128Mi
     ## Enable external access to the kafka cluster through NodePort
     nodeport:
-      enabled: false
+      enabled: true
 
     loadbalancers: 1
 
     loadbalancer:
-      enabled: true
+      enabled: false
       port: 9094
 
     ## Kafka Server properties
