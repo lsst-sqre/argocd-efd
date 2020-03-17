@@ -17,7 +17,7 @@ oauth2-proxy:
     enabled: true
     path: /
     hosts:
-      - lsst-control-center-int-efd.lsst.codes
+      - lsst-control-center-int-efd.ncsa.illinois.edu
     annotations:
       kubernetes.io/ingress.class: "nginx"
       nginx.ingress.kubernetes.io/ssl-redirect: "true"
@@ -31,7 +31,7 @@ oauth2-proxy:
     tls:
       - secretName: tls-certs
         hosts:
-          - lsst-control-center-int-efd.lsst.codes
+          - lsst-control-center-int-efd.ncsa.illinois.edu
 
 ## Environment where the EFD is deployed
 env: ncsa-int
