@@ -17,6 +17,8 @@ spec:
     # The DNS is managed by NCSA breaking our convention for
     # naming the services
     host: lsst-schema-registry-nts-efd.ncsa.illinois.edu
+    {{- else if eq .Values.env "ncsa-int" -}}
+    host: lsst-schema-registry-int-efd.ncsa.illinois.edu
     {{- else -}}
     host: schema-registry-{{ .Values.env }}-efd.lsst.codes
     {{- end}}
