@@ -27,7 +27,7 @@ chronograf:
     ##
     # storageClass: "-"
     accessMode: ReadWriteOnce
-    size: 8Gi
+    size: 16Gi
 
   ## Configure the ingress object to hook into existing infastructure
   ## ref : http://kubernetes.io/docs/user-guide/ingress/
