@@ -1,5 +1,5 @@
-{{- if ne .Values.env "ncsa-int" -}}
-# Argo CD is already deployed on ncsa-int
+{{- if and (ne .Values.env "ncsa-int") (ne .Values.env "ncsa-stable") -}}
+# Argo CD is already deployed on ncsa-int and ncsa-stable
 apiVersion: ricoberger.de/v1alpha1
 kind: VaultSecret
 metadata:

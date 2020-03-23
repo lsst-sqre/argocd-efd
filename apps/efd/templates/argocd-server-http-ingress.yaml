@@ -1,5 +1,5 @@
-{{- if ne .Values.env "ncsa-int" -}}
-# Argo CD is already deployed on ncsa-int
+{{- if and (ne .Values.env "ncsa-int") (ne .Values.env "ncsa-stable") -}}
+# Argo CD is already deployed on ncsa-int and ncsa-stable
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:

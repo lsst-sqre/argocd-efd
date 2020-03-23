@@ -4,5 +4,11 @@ metadata:
   name: tls-certs
   namespace: influxdb-staging
 spec:
+  {{- if eq .Values.env "ncsa-int" }}
+  path: secret/k8s_operator/lsst-lsp-int.ncsa.illinois.edu/efd/tls-certs
+  {{- else if eq .Values.env "ncsa-stable" }}
+  path: secret/k8s_operator/lsst-lsp-stable.ncsa.illinois.edu/efd/tls-certs
+  {{- else }}
   path: secret/dm/square/efd/{{ .Values.env }}/tls-certs
+  {{- end }}
   type: Opaque

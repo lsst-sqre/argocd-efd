@@ -4,5 +4,11 @@ metadata:
   name: influxdb-auth
   namespace: influxdb-sink-staging
 spec:
+  {{- if eq .Values.env "ncsa-int" }}
+  path: secret/k8s_operator/lsst-lsp-int.ncsa.illinois.edu/efd/influxdb-auth
+  {{- else if eq .Values.env "ncsa-stable" }}
+  path: secret/k8s_operator/lsst-lsp-stable.ncsa.illinois.edu/efd/influxdb-auth
+  {{- else }}
   path: secret/dm/square/efd/{{ .Values.env }}/influxdb-auth
+  {{- end }}
   type: Opaque

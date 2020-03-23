@@ -6,6 +6,8 @@ metadata:
 spec:
   {{- if eq .Values.env "ncsa-int" }}
   path: secret/k8s_operator/lsst-lsp-int.ncsa.illinois.edu/efd/chronograf-oauth
+  {{- else if eq .Values.env "ncsa-stable" }}
+  path: secret/k8s_operator/lsst-lsp-stable.ncsa.illinois.edu/efd/chronograf-oauth
   {{- else }}
   path: secret/dm/square/efd/{{ .Values.env }}/chronograf-oauth
   {{- end }}
