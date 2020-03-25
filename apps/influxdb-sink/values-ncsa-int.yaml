@@ -9,8 +9,8 @@ kafka-connect-manager:
     enabled: true
     name: influxdb-sink
     influxdbUrl: "http://influxdb-0.influxdb.influxdb.svc.cluster.local:8086"
-    database: "efd"
-    filter: "lsst.sal.*"
+    database: "nts"
+    filter: "nts.lsst.sal.*"
     tasks: 1
     existingSecret: influxdb-auth
 
