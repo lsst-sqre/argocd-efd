@@ -1,0 +1,20 @@
+---
+kafka-connect-manager:
+  image:
+    repository: lsstsqre/kafka-connect-manager
+    tag: v0.7.0
+    pullPolicy: Always
+
+  replicator:
+    enabled: true
+    name: replicator
+    srcKafka: "lsst-kafka-0-nts-efd.ncsa.illinois.edu:31090"
+    destKafka: "cp-helm-charts-cp-kafka-headless.cp-helm-charts:9092"
+    topicRenameFormat: "nts.${topic}"
+    tasks: 1
+    schemaRegistryTopic: "_schemas"
+    schemaRegistryUrl: "cp-helm-charts-cp-schema-registry.cp-helm-charts:8081"
+    filter: "lsst.sal.*"
+
+## Environment where the EFD is deployed
+env: ncsa-int

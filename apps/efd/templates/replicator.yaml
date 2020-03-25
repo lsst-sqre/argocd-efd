@@ -1,0 +1,20 @@
+{{- if or (eq .Values.env "ncsa-int") (eq .Values.env "ncsa-stable") }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: replicator
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: replicator
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: apps/replicator
+    repoURL: https://github.com/lsst-sqre/argocd-efd
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values-{{ .Values.env }}.yaml
+{{- end -}}
