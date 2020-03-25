@@ -8,9 +8,9 @@ kafka-connect-manager:
   replicator:
     enabled: true
     name: replicator
-    srcKafka: "lsst-kafka-0-nts-efd.ncsa.illinois.edu:31090"
+    srcKafka: "kafka-0-tucson-teststand-efd.lsst.codes:31090"
     destKafka: "cp-helm-charts-cp-kafka-headless.cp-helm-charts:9092"
-    topicRenameFormat: "nts.${topic}"
+    topicRenameFormat: "tts.${topic}"
     tasks: 1
     schemaRegistryTopic: "_schemas"
     schemaRegistryUrl: "cp-helm-charts-cp-schema-registry.cp-helm-charts:8081"
