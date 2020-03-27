@@ -8,11 +8,19 @@ TL;DR
 
 .. list-table::
 
-   * - Summit EFD
+   * - **EFD instance**
+     - **Argo CD URL**
+   * - Summit 
      - https://argocd-summit.lsst.codes
-   * - Tucson Teststand EFD
+   * - Tucson Test Stand 
      - https://argocd-tucson-teststand.lsst.codes
-   * - Sandbox EFD
+   * - NCSA Test Stand
+     - https://lsst-argocd-nts-efd.ncsa.illinois.edu
+   * - LSP Integration 
+     - https://lsst-lsp-int.ncsa.illinois.edu/argo-cd
+   * - LSP Stable
+     - https://lsst-lsp-stable.ncsa.illinois.edu/argo-cd
+   * - Sandbox
      - https://argocd-sandbox.lsst.codes
 
 
