@@ -10,13 +10,13 @@ TL;DR
 
    * - **EFD instance**
      - **Argo CD URL**
-   * - Summit 
+   * - Summit
      - https://argocd-summit.lsst.codes
-   * - Tucson Test Stand 
+   * - Tucson Test Stand
      - https://argocd-tucson-teststand.lsst.codes
    * - NCSA Test Stand
      - https://lsst-argocd-nts-efd.ncsa.illinois.edu
-   * - LSP Integration 
+   * - LSP Integration
      - https://lsst-lsp-int.ncsa.illinois.edu/argo-cd
    * - LSP Stable
      - https://lsst-lsp-stable.ncsa.illinois.edu/argo-cd
@@ -57,37 +57,43 @@ For that, a Kubernetes secret containing the `VAULT_TOKEN` and the `VAULT_TOKEN_
   kubectl create secret generic vault-secrets-operator --from-literal=VAULT_TOKEN=$VAULT_TOKEN --from-literal=VAULT_TOKEN_LEASE_DURATION=$VAULT_TOKEN_LEASE_DURATION --namespace vault-secrets-operator
 
 
+Secrets are created manually on Vault:
+
+- Chronograf GitHub OAuth2
+- Control Center GitHub OAuth2
+- InfluxDB Auth
+- TLS certs
+
+
 
 Environments
 ------------
 
-``argocd-efd`` manages the deployment of the EFD on multiple environments. The possible environments are ``summit``, ``tucson-teststand``, ``ncsa-teststand``, and ``sandbox``. Configuration values for the apps are named after the environment ``values-<environment>.yaml``.
+``argocd-efd`` manages the deployment of the EFD on multiple environments. The possible environments are ``summit``, ``tucson-teststand``, ``ncsa-teststand``,``ncsa-int``, ``ncsa-stable`` and ``sandbox``. Configuration values for the apps are named after the environment ``values-<environment>.yaml``.
 
 
 
 EFD apps
 ^^^^^^^^
 
-A source EFD has the following apps:
+An EFD instance has the following applications:
 
-- nginx-ingress
-- vaul-secrets-operator
-- cp-helm-charts
-- influxb-sink
-- influxdb
-- chronograf
-- kapacitor
-- telegraf (work in progress)
-- aggregator (work in progress)
-- replicator (work in progress)
-- oracle-sink (work in progress)
-- parket-sink (work in progress)
+- Confluent Kafka: Kafka, Zookeeper, kafka Connect, Schema Registry and Control Center
+- InfluxDB: Time-series database
+- Chronograf: Time-series visualization
+- Kapacitor: Time-series monitoring and alerting
+- Lenses InfluxDB Sink Connector
+- Confluent Replicator Connector
+- Telegraf Daemon Set: Kubernetes cluster monitoring (work in progress)
+- Aggregator (work in progress)
+- Oracle Sink Connector (work in progress)
+- Parquet Sink Connector (work in progress)
 
 
 Service names
 ^^^^^^^^^^^^^
 
-Service names for the apps follow the convention ``<app>-<environment>-efd.lsst.codes``, for example, `chronograf-summit-efd.lsst.codes <https://chronograf-summit-efd.lsst.codes>`_.
+Service names for the apps follow the convention (when possible) ``<app>-<environment>-efd.lsst.codes``, for example, `chronograf-summit-efd.lsst.codes <https://chronograf-summit-efd.lsst.codes>`_.
 
 DNS records are created manually on AWS Route53.
 
@@ -97,7 +103,6 @@ Set your AWS credentials
 
   export AWS_ACCESS_KEY_ID=
   export AWS_SECRET_ACCESS_KEY
-
 
 Get the LoadBalancer Ingress IP address from ``kubectl describe service nginx-ingress-controller -n nginx-ingress``, and then use the following to create the DNS records:
 
