@@ -13,7 +13,7 @@ kafka-connect-manager:
     topicRenameFormat: "tts.${topic}"
     tasks: 1
     schemaRegistryTopic: "_schemas"
-    schemaRegistryUrl: "cp-helm-charts-cp-schema-registry.cp-helm-charts:8081"
+    schemaRegistryUrl: "https://lsst-schema-registry-int-efd.ncsa.illinois.edu/"
     filter: "lsst.sal.*"
 
 ## Environment where the EFD is deployed
