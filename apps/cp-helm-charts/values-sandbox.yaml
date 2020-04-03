@@ -19,11 +19,11 @@ cp-helm-charts:
       ## production servers this number should likely be much larger.
       ##
       ## Size for Data dir, where ZooKeeper will store the in-memory database snapshots.
-      dataDirSize: 15Gi
+      dataDirSize: 100Gi
       dataDirStorageClass: standard
 
       ## Size for data log dir, which is a dedicated log device to be used, and helps avoid competition between logging and snaphots.
-      dataLogDirSize: 15Gi
+      dataLogDirSize: 100Gi
       dataLogDirStorageClass: standard
     resources: {}
     ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
@@ -50,7 +50,7 @@ cp-helm-charts:
     heapOptions: "-Xms512M -Xmx512M"
     persistence:
       enabled: true
-      size: 15Gi
+      size: 100Gi
       storageClass: standard
       disksPerBroker: 1
     resources: {}
