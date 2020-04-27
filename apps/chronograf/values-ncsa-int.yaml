@@ -2,8 +2,8 @@ chronograf:
   ## Image Settings
   ##
   image:
-    repository: "docker.io/chronograf"
-    tag: "1.7.14"
+    repository: "quay.io/influxdb/chronograf"
+    tag: "1.8.0"
     pullPolicy: "Always"
 
   ## Specify a service type
