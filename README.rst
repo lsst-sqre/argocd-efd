@@ -12,6 +12,8 @@ TL;DR
      - **Argo CD URL**
    * - Summit
      - https://argocd-summit.lsst.codes
+   * - Base
+     - https://kueyen.lsst.codes/
    * - Tucson Test Stand
      - https://argocd-tucson-teststand.lsst.codes
    * - NCSA Test Stand
@@ -46,7 +48,7 @@ Secrets
 
 The EFD application deploys the `vault-secrets-operator <https://github.com/ricoberger/vault-secrets-operator>`_ which is configured to retrieve the right secrets from the `LSST Vault's service <https://vault.lsst.codes>`_.
 
-For that, a Kubernetes secret containing the `VAULT_TOKEN` and the `VAULT_TOKEN_LEASE_DURATION` (in seconds) needs to be created:
+For that, a Kubernetes secret containing the read `VAULT_TOKEN` and the `VAULT_TOKEN_LEASE_DURATION` (in seconds) needs to be created. The read VAULT_TOKEN for the specific cluster can be found on SQuaRE's 1Password.
 
 
 .. code-block::
@@ -65,11 +67,10 @@ Secrets are created manually on Vault:
 - TLS certs
 
 
-
 Environments
 ------------
 
-``argocd-efd`` manages the deployment of the EFD on multiple environments. The possible environments are ``summit``, ``tucson-teststand``, ``ncsa-teststand``,``ncsa-int``, ``ncsa-stable`` and ``sandbox``. Configuration values for the apps are named after the environment ``values-<environment>.yaml``.
+``argocd-efd`` manages the deployment of the EFD on multiple environments. The possible environments are ``summit``, ``base``, ``tucson-teststand``, ``ncsa-teststand``,``ncsa-int``, ``ncsa-stable`` and ``sandbox``. Configuration values for the apps are named after the environment ``values-<environment>.yaml``.
 
 
 
@@ -83,7 +84,7 @@ An EFD instance has the following applications:
 - Chronograf: Time-series visualization
 - Kapacitor: Time-series monitoring and alerting
 - Lenses InfluxDB Sink Connector
-- Confluent Replicator Connector
+- Confluent Replicator Connector (experimental)
 - Telegraf Daemon Set: Kubernetes cluster monitoring (work in progress)
 - Aggregator (work in progress)
 - Oracle Sink Connector (work in progress)
@@ -115,4 +116,5 @@ Get the LoadBalancer Ingress IP address from ``kubectl describe service nginx-in
   create_dns_record.sh influxdb $ENV-efd $LB_IP
   create_dns_record.sh chronograf $ENV-efd $LB_IP
   create_dns_record.sh schema-registry $ENV-efd $LB_IP
+  create_dns_record.sh control-center $ENV-efd $LB_IP
   create_dns_record.sh kafka-0 $ENV-efd $LB_IP

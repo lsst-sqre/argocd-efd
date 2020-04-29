@@ -5,8 +5,8 @@ spec:
     repoURL: https://github.com/lsst-sqre/argocd-efd
 
 ## Enviroment where the EFD is deployed. Possible values are summit,
-## tucson-teststand, ncsa-teststand, ncsa-int, ncsa-stable and sandbox.
+## tucson-teststand, ncsa-teststand, ncsa-int, ncsa-stable, base, and sandbox.
 ## This parameter is usually set via the `argocd app create command` see
 ## https://github.com/lsst-sqre/argocd-efd
 
-env: "ncsa-int"
+env: ""

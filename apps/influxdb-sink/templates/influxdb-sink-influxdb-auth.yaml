@@ -10,6 +10,8 @@ spec:
   path: secret/k8s_operator/lsst-lsp-int.ncsa.illinois.edu/efd/influxdb-auth
   {{- else if eq .Values.env "ncsa-stable" }}
   path: secret/k8s_operator/lsst-lsp-stable.ncsa.illinois.edu/efd/influxdb-auth
+  {{- else if eq .Values.env "base" }}
+  path: secret/k8s_operator/base-lsp.lsst.codes/efd/influxdb-auth
   {{- else }}
   path: secret/dm/square/efd/{{ .Values.env }}/influxdb-auth
   {{- end }}
