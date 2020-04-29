@@ -59,12 +59,53 @@ For that, a Kubernetes secret containing the read `VAULT_TOKEN` and the `VAULT_T
   kubectl create secret generic vault-secrets-operator --from-literal=VAULT_TOKEN=$VAULT_TOKEN --from-literal=VAULT_TOKEN_LEASE_DURATION=$VAULT_TOKEN_LEASE_DURATION --namespace vault-secrets-operator
 
 
-Secrets are created manually on Vault:
+Secrets are created manually on Vault, use a write `VAULT_TOKEN` to create these:
 
-- Chronograf GitHub OAuth2
-- Control Center GitHub OAuth2
-- InfluxDB Auth
-- TLS certs
+.. code-block::
+
+  export VAULT_ADDR=https://vault.lsst.codes
+  export VAULT_TOKEN=<vault token>
+  export VAULT_PATH=<vault path>
+
+InfluxDB credentials
+^^^^^^^^^^^^^^^^^^^^
+
+.. code-block::
+
+  vault kv put $VAULT_PATH/influxdb-auth influxdb-user=admin influxdb-password=
+
+TLS certs
+^^^^^^^^^
+
+Make sure you pick the chain certificate for `tls.crt`.
+
+.. code-block::
+
+  vault kv put $VAULT_PATH/tls-certs tls.crt=@tls.crt tls.key=@/tls.key
+
+
+Chronograf GitHub OAuth
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block::
+
+  export TOKEN_SECRET=$(openssl rand -base64 256 | tr -d '\n')
+  export GITHUB_CLIENT_ID=
+  export GITHUB_CLIENT_SECRET=
+
+  vault kv put  $VAULT_PATH/chronograf-oauth  token_secret=$TOKEN_SECRET gh_client_id=$GITHUB_CLIENT_ID  gh_client_secret=$GITHUB_CLIENT_SECRET gh_orgs=lsst-sqre
+
+
+Control center
+^^^^^^^^^^^^^^
+
+.. code-block::
+
+  export COOKIE_SECRET=$(openssl rand -base64 256 | tr -d '\n')
+  export GITHUB_CLIENT_ID=
+  export GITHUB_CLIENT_SECRET=
+
+  vault kv put $VAULT_PATH/control-center-oauth  client-id=$GITHUB_CLIENT_ID client-secret=$GITHUB_CLIENT_SECRET  cookie-secret=$COOKIE_SECRET
 
 
 Environments
