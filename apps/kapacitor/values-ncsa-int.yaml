@@ -42,7 +42,7 @@ kapacitor:
   ## Set the URL of InfluxDB instance to create subscription on
   ## ref: https://docs.influxdata.com/kapacitor/v1.1/introduction/getting_started/
   ##
-  influxURL: http://influxdb-0.influxdb.influxdb.svc.cluster.local:8086
+  influxURL: http://influxdb.influxdb:8086
 
   existingSecret: influxdb-auth
 
