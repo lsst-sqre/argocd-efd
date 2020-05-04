@@ -4,7 +4,7 @@ kapacitor:
   ##
   image:
     repository: "kapacitor"
-    tag: "1.5.3-alpine"
+    tag: "1.5.4-alpine"
     pullPolicy: "IfNotPresent"
 
   ## Specify a service type, defaults to NodePort
@@ -43,6 +43,8 @@ kapacitor:
   ## ref: https://docs.influxdata.com/kapacitor/v1.1/introduction/getting_started/
   ##
   influxURL: http://influxdb.influxdb:8086
+
+  existingSecret: influxdb-auth
 
 ## Environment where the EFD is deployed
 env: sandbox

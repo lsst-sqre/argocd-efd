@@ -12,7 +12,7 @@ spec:
   path: secret/k8s_operator/lsst-lsp-stable.ncsa.illinois.edu/efd/influxdb-auth
   {{- else if eq .Values.env "base" }}
   path: secret/k8s_operator/base-lsp.lsst.codes/efd/influxdb-auth
-  {{- else -}}
+  {{- else }}
   path: secret/dm/square/efd/{{ .Values.env }}/influxdb-auth
   {{- end }}
   type: Opaque
