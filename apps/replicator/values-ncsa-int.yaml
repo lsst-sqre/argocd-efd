@@ -6,7 +6,7 @@ kafka-connect-manager:
     pullPolicy: Always
 
   replicator:
-    enabled: true
+    enabled: false
     name: replicator
     srcKafka: "kafka-0-tucson-teststand-efd.lsst.codes:31090"
     destKafka: "cp-helm-charts-cp-kafka-headless.cp-helm-charts:9092"

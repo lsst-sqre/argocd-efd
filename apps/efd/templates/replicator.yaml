@@ -1,4 +1,4 @@
-{{- if or (eq .Values.env "ncsa-int") (eq .Values.env "ncsa-stable") }}
+{{- if (eq .Values.env "ncsa-stable") }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
