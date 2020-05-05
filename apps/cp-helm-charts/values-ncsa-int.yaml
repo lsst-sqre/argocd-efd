@@ -170,27 +170,9 @@ cp-helm-charts:
     ksql:
       headless: false
 
-  ## ------------------------------------------------------
-  ## Control Center
-  ## ------------------------------------------------------
+
   cp-control-center:
     enabled: false
-    image: confluentinc/cp-enterprise-control-center
-    imageTag: 5.3.1
-    ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
-    ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
-    imagePullSecrets:
-    #  - name: "regcred"
-    heapOptions: "-Xms512M -Xmx512M"
-    resources: {}
-    ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
-    ## and remove the curly braces after 'resources:'
-    #  limits:
-    #   cpu: 100m
-    #   memory: 128Mi
-    #  requests:
-    #   cpu: 100m
-    #   memory: 128Mi
 
 ## Environment where the EFD is deployed
 env: ncsa-int

@@ -14,7 +14,7 @@ oauth2-proxy:
     type: ClusterIP
     port: 9021
   ingress:
-    enabled: true
+    enabled: false
     path: /
     hosts:
       - lsst-control-center-int-efd.ncsa.illinois.edu
