@@ -12,6 +12,7 @@ kafka-connect-manager:
     database: "tts"
     filter: "tts.lsst.sal.*"
     tasks: 1
+    timestamp: private_sndStamp
     existingSecret: influxdb-auth
 
 ## Environment where the EFD is deployed
