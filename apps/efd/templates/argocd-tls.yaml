@@ -6,6 +6,10 @@ metadata:
   name: tls-certs
   namespace: argocd
 spec:
+  {{- if eq .Values.env "ncsa-teststand" }}
+  path: secret/k8s_operator/lsst-nts-k8s.ncsa.illinois.edu/efd/tls-certs
+  {{- else }}
   path: secret/dm/square/efd/{{ .Values.env }}/tls-certs
+  {{- end }}
   type: Opaque
 {{- end -}}
