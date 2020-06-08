@@ -1,10 +1,12 @@
 apiVersion: ricoberger.de/v1alpha1
 kind: VaultSecret
 metadata:
-  name: tls-certs
+  name: lsst-codes-tls
   namespace: oauth2-proxy
 spec:
-  {{- if eq .Values.env "ncsa-int" }}
+  {{- if eq .Values.env "ncsa-teststand" }}
+  path: secret/k8s_operator/lsst-nts-k8s.ncsa.illinois.edu/efd/lsst-codes-tls
+  {{- else if eq .Values.env "ncsa-int" }}
   path: secret/k8s_operator/lsst-lsp-int.ncsa.illinois.edu/efd/tls-certs
   {{- else if eq .Values.env "ncsa-stable" }}
   path: secret/k8s_operator/lsst-lsp-stable.ncsa.illinois.edu/efd/tls-certs
