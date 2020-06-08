@@ -77,7 +77,7 @@ cp-helm-charts:
     configurationOverrides:
       offsets.retention.minutes: 30
       log.retention.hours: 1
-
+      log.retention.bytes: "42949672960"
 
   ## ------------------------------------------------------
   ## Schema Registry
