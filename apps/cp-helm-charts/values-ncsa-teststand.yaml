@@ -189,5 +189,17 @@ cp-helm-charts:
     #   cpu: 100m
     #   memory: 128Mi
 
+    configurationOverrides:
+      # Set confluent metric retention time to 24h due to disk space
+      # constraint
+      internal.topics.retention.ms: "86400000"
+      internal.topics.replication: 1
+      command.topic.retention.ms: "86400000"
+      command.topic.replication: 1
+      interceptor.topic.retention.ms: "86400000"
+      interceptor.topic.replication: 1
+      topic.retention.ms: "86400000"
+      topic.replication: 1
+
 ## Environment where the EFD is deployed
 env: ncsa-teststand
