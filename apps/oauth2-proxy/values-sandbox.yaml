@@ -29,7 +29,7 @@ oauth2-proxy:
         proxy_set_header X-Forwarded-Port 443;
         proxy_set_header X-Forwarded-Path /;
     tls:
-      - secretName: tls-certs
+      - secretName: lsst-codes-tls
         hosts:
           - control-center-sandbox-efd.lsst.codes
 
