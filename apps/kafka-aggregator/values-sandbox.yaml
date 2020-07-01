@@ -46,7 +46,7 @@ kafka-aggregator:
       # Number of fields for source topics used in the aggregation example.
       nfields: 10
       # The frequency in Hz in wich messages are produced.
-      frequency: 10
+      frequency: 50
       # The maximum number of messages to produce.  Set max_messages to a number
       # smaller than 1 to produce an indefinite number of messages.
       max_messages: 0
