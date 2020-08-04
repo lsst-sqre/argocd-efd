@@ -4,7 +4,7 @@ kafka-aggregator:
 
   image:
     repository: lsstsqre/kafkaaggregator
-    tag: master
+    tag: tickets-DM-25486
     pullPolicy: Always
 
   env:
