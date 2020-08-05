@@ -42,7 +42,7 @@ kafka-aggregator:
     enabled: true
     env:
       # Number of source topics used in the aggregation example.
-      ntopics: 100
+      ntopics: 10
       # Number of fields for source topics used in the aggregation example.
       nfields: 10
       # The frequency in Hz in wich messages are produced.
