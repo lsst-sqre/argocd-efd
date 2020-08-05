@@ -1,0 +1,20 @@
+{{- if eq .Values.env "sandbox" -}}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: s3-sink
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: s3-sink
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: apps/s3-sink
+    repoURL: https://github.com/lsst-sqre/argocd-efd
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values-{{ .Values.env }}.yaml
+{{- end -}}

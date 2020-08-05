@@ -1,0 +1,52 @@
+---
+kafka-connect-manager:
+  image:
+    repository: lsstsqre/kafkaconnect
+    tag: tickets-DM-25486
+    pullPolicy: Always
+
+  s3-sink:
+    enabled: true
+    ## Name of the connector to create
+    name: s3-sink
+    ## s3 bucket name. Must exist already.
+    s3BucketName: "efd-sandbox.data"
+    ## s3 region
+    s3Region: "us-east-1"
+    ## Top level directory to store the data ingested from Kafka.
+    topicsDir: "topics"
+    ## aws_access_key_id and aws_secret_access_key secrets
+    awsSecret: "aws-secret"
+    ## Number of records written to store before invoking file commits
+    flushSize: "1000"
+    ## The time interval in milliseconds to invoke file commits.
+    rotateIntervalMs: "60000"
+    ## The duration of a partition in milliseconds, used by TimeBasedPartitioner.
+    ## Default is 1h for an hourly based partitioner.
+    partitionDurationMs: "3600000"
+    ## Pattern used to format the path in the S3 object name.
+    pathFormat: "'year'=YYYY/'month'=MM/'day'=dd/'hour'=HH"
+    ## Number of Kafka Connect tasks.
+    tasksMax: 1
+    ## Regex for selecting topics.
+    topicRegex: "example.*-aggregated"
+    ## Check for new topics and update the connector.
+    autoUpdate: true
+    ## The interval, in milliseconds, to check for new topics and update
+    ## the connector.
+    checkInterval: "15000"
+    ## Comma separated list of topics to exclude from selection.
+    excludedTopics: ""
+    ## The locale to use when partitioning with TimeBasedPartitioner.
+    locale: "en-US"
+    ## The timezone to use when partitioning with TimeBasedPartitioner.
+    timezone: "UTC"
+    ## The extractor determines how to obtain a timestamp from each record.
+    timestampExtractor: "Record"
+    ## The record field to be used as timestamp by the timestamp extractor.
+    ## Only applies if timestampExtractor is set to RecordField.
+    timestampField: "time"
+
+
+## Environment where the EFD is deployed
+env: sandbox
