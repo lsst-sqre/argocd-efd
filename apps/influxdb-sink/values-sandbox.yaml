@@ -10,7 +10,7 @@ kafka-connect-manager:
     name: influxdb-sink
     influxdbUrl: "http://influxdb.influxdb:8086"
     database: "example"
-    filter: "example.*"
+    filter: "example.*-aggregated"
     tasks: 1
     timestamp: time
     existingSecret: influxdb-auth
