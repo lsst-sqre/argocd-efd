@@ -34,7 +34,7 @@ kafka-aggregator:
     # {source_topic_name}`` as a placeholder for the source topic name.
     topic_rename_format: "{source_topic_name}-aggregated"
     # List of field names to exclude from aggregation.
-    excluded_field_names: ""
+    excluded_field_names: "time, count, window_size"
 
   # If the example is enabled, it creates a job to initialize and to
   # produce messages for the example topics.
