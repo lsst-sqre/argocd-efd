@@ -13,7 +13,7 @@ TL;DR
    * - Summit
      - https://argocd-summit.lsst.codes
    * - Base
-     - https://kueyen.lsst.codes/
+     - https://kueyen.lsst.codes/argo-cd
    * - Tucson Test Stand
      - https://argocd-tucson-teststand.lsst.codes
    * - NCSA Test Stand
