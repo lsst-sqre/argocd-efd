@@ -34,6 +34,9 @@ cp-helm-charts:
     #  requests:
     #   cpu: 100m
     #   memory: 128Mi
+    # Used to regulate heartbeats, and timeouts. For example, the minimum session timeout will be two ticks.
+    configurationOverrides:
+      tickTime: 8000
 
   ## ------------------------------------------------------
   ## Kafka
