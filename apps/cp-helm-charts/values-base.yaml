@@ -20,11 +20,11 @@ cp-helm-charts:
       ##
       ## Size for Data dir, where ZooKeeper will store the in-memory database snapshots.
       dataDirSize: 100Gi
-      dataDirStorageClass: "rook-ceph-block"
+      dataDirStorageClass: "local-path"
 
       ## Size for data log dir, which is a dedicated log device to be used, and helps avoid competition between logging and snaphots.
       dataLogDirSize: 100Gi
-      dataLogDirStorageClass: "rook-ceph-block"
+      dataLogDirStorageClass: "local-path"
     resources: {}
     ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
     ## and remove the curly braces after 'resources:'
@@ -51,7 +51,7 @@ cp-helm-charts:
     persistence:
       enabled: true
       size: 100Gi
-      storageClass: "rook-ceph-block"
+      storageClass: "local-path"
       disksPerBroker: 1
     resources: {}
     ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
