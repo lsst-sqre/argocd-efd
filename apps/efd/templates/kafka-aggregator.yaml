@@ -1,4 +1,4 @@
-{{- if (ne .Values.env "ncsa-int") -}}
+{{- if and (ne .Values.env "ncsa-int")  (ne .Values.env "ncsa-teststand") -}}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
