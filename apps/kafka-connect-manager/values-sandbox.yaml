@@ -2,11 +2,21 @@
 kafka-connect-manager:
   image:
     repository: lsstsqre/kafkaconnect
-    tag: tickets-DM-25486
+    tag: 0.8.0
     pullPolicy: Always
 
-  s3Sink:
+  influxdbSink:
     enabled: true
+    name: influxdb-sink
+    connectInfluxUrl: "http://influxdb.influxdb:8086"
+    connectInfluxDb: "example"
+    topicRegex: "lsst.sal.*"
+    tasksMax: 1
+    timestamp: private_sndStamp
+    influxSecret: influxdb-auth
+
+  s3Sink:
+    enabled: false
     ## Name of the connector to create
     name: "s3-sink"
     ## s3 bucket name. Must exist already.
@@ -46,7 +56,6 @@ kafka-connect-manager:
     ## The record field to be used as timestamp by the timestamp extractor.
     ## Only applies if timestampExtractor is set to RecordField.
     timestampField: "time"
-
 
 ## Environment where the EFD is deployed
 env: sandbox

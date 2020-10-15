@@ -1,17 +1,17 @@
-{{- if eq .Values.env "sandbox" -}}
+{{- if (ne .Values.env "ncsa-int") -}}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: s3-sink
+  name: kafka-connect-manager
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: s3-sink
+    namespace: kafka-connect-manager
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: apps/s3-sink
+    path: apps/kafka-connect-manager
     repoURL: https://github.com/lsst-sqre/argocd-efd
     targetRevision: HEAD
     helm:
