@@ -1,10 +1,10 @@
 kapacitor:
   ## influxdb image version
-  ## ref: https://hub.docker.com/r/library/influxdb/tags/
+  ## ref: https://https://hub.docker.com/_/kapacitor?tab=tags
   ##
   image:
     repository: "kapacitor"
-    tag: "1.5.4-alpine"
+    tag: "1.5.6"
     pullPolicy: "IfNotPresent"
 
   ## Specify a service type, defaults to NodePort

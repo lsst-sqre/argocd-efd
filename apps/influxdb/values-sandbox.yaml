@@ -4,7 +4,7 @@ influxdb:
   ## ref: https://hub.docker.com/r/library/influxdb/tags/
   image:
     repo: "influxdb"
-    tag: "1.8.0-alpine"
+    tag: "1.8.3"
     pullPolicy: IfNotPresent
 
   ## Specify a service type
