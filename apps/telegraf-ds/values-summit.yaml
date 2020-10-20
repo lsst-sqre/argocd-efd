@@ -1,0 +1,35 @@
+---
+telegraf-ds:
+  ## Exposed telegraf configuration
+  ## ref: https://docs.influxdata.com/telegraf/v1.13/administration/configuration/
+  config:
+    # global_tags:
+    #   cluster: "mycluster"
+    agent:
+      interval: "10s"
+      round_interval: true
+      metric_batch_size: 1000
+      metric_buffer_limit: 10000
+      collection_jitter: "0s"
+      flush_interval: "10s"
+      flush_jitter: "0s"
+      precision: ""
+      debug: false
+      quiet: false
+      logfile: ""
+      hostname: "$HOSTNAME"
+      omit_hostname: false
+    outputs:
+      - influxdb:
+          urls:
+            - "http://influxdb-0.influxdb.influxdb.svc.cluster.local:8086"
+          database: "telegraf"
+          retention_policy: ""
+          timeout: "5s"
+          username: "telegraf"
+          user_agent: "telegraf"
+          insecure_skip_verify: false
+    monitor_self: false
+
+## Environment where the EFD is deployed
+env: summit
