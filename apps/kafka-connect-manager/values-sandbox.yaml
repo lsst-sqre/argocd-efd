@@ -2,7 +2,7 @@
 kafka-connect-manager:
   image:
     repository: lsstsqre/kafkaconnect
-    tag: 0.8.0
+    tag: 0.8.1
     pullPolicy: Always
 
   influxdbSink:
@@ -10,6 +10,7 @@ kafka-connect-manager:
     name: influxdb-sink
     connectInfluxUrl: "http://influxdb.influxdb:8086"
     connectInfluxDb: "example"
+    connectInfluxErrorPolicy: THROW
     topicRegex: "lsst.sal.*"
     tasksMax: 1
     timestamp: private_sndStamp
