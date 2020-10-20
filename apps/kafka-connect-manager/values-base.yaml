@@ -10,6 +10,7 @@ kafka-connect-manager:
     name: influxdb-sink
     connectInfluxUrl: "http://influxdb-0.influxdb.influxdb.svc.cluster.local:8086"
     connectInfluxDb: "efd"
+    connectInfluxErrorPolicy: NOOP
     topicRegex: "lsst.sal.*"
     tasksMax: 1
     timestamp: private_sndStamp
