@@ -1,0 +1,28 @@
+---
+kafdrop:
+  replicaCount: 1
+
+  kafka:
+    brokerConnect: cp-helm-charts-cp-kafka-headless.cp-helm-charts:9092
+
+  host: localhost
+
+  jvm:
+    opts: "-Xms32M -Xmx64M"
+  jmx:
+    port: 8686
+
+  cmdArgs: "--message.format=AVRO --schemaregistry.connect=https://schema-registry-sandbox-efd.lsst.codes/"
+
+  ingress:
+    enabled: true
+    annotations: {kubernetes.io/ingress.class: "nginx"}
+    path: /
+    hosts:
+      - kafdrop-sandbox-efd.lsst.codes
+    tls:
+        - secretName: "tls-certs"
+          hosts:
+            - kafdrop-sandbox-efd.lsst.codes
+
+env: sandbox
