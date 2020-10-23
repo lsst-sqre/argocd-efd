@@ -1,7 +1,7 @@
 apiVersion: ricoberger.de/v1alpha1
 kind: VaultSecret
 metadata:
-  name: control-center-oauth
+  name: kafdrop-oauth
   namespace: oauth2-proxy
 spec:
   {{- if eq .Values.env "ncsa-teststand" }}

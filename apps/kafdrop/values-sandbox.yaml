@@ -14,15 +14,4 @@ kafdrop:
 
   cmdArgs: "--message.format=AVRO --schemaregistry.connect=https://schema-registry-sandbox-efd.lsst.codes/"
 
-  ingress:
-    enabled: true
-    annotations: {kubernetes.io/ingress.class: "nginx"}
-    path: /
-    hosts:
-      - kafdrop-sandbox-efd.lsst.codes
-    tls:
-        - secretName: "tls-certs"
-          hosts:
-            - kafdrop-sandbox-efd.lsst.codes
-
 env: sandbox
