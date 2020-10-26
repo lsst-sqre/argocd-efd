@@ -1,4 +1,4 @@
-{{- if or (eq .Values.env "sandbox") (eq .Values.env "base") (eq .Values.env "summit") -}}
+{{- if or (eq .Values.env "sandbox") (eq .Values.env "base") (eq .Values.env "summit") (eq .Values.env "ncsa-teststand") -}}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:

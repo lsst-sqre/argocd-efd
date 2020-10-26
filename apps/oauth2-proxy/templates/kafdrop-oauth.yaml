@@ -5,14 +5,14 @@ metadata:
   namespace: oauth2-proxy
 spec:
   {{- if eq .Values.env "ncsa-teststand" }}
-  path: secret/k8s_operator/lsst-nts-k8s.ncsa.illinois.edu/efd/control-center-oauth
+  path: secret/k8s_operator/lsst-nts-k8s.ncsa.illinois.edu/efd/kafdrop-oauth
   {{- else if eq .Values.env "ncsa-int" }}
-  path: secret/k8s_operator/lsst-lsp-int.ncsa.illinois.edu/efd/control-center-oauth
+  path: secret/k8s_operator/lsst-lsp-int.ncsa.illinois.edu/efd/kafdrop-oauth
   {{- else if eq .Values.env "ncsa-stable" }}
-  path: secret/k8s_operator/lsst-lsp-stable.ncsa.illinois.edu/efd/control-center-oauth
+  path: secret/k8s_operator/lsst-lsp-stable.ncsa.illinois.edu/efd/kafdrop-oauth
   {{- else if eq .Values.env "base" }}
-  path: secret/k8s_operator/base-lsp.lsst.codes/efd/control-center-oauth
+  path: secret/k8s_operator/base-lsp.lsst.codes/efd/kafdrop-oauth
   {{- else }}
-  path: secret/dm/square/efd/{{ .Values.env }}/control-center-oauth
+  path: secret/dm/square/efd/{{ .Values.env }}/kafdrop-oauth
   {{- end }}
   type: Opaque
