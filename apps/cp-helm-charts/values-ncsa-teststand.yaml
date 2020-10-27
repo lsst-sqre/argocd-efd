@@ -7,7 +7,7 @@ cp-helm-charts:
     enabled: true
     servers: 3
     image: confluentinc/cp-zookeeper
-    imageTag: 5.5.0
+    imageTag: 5.5.2
     ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
     ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
     imagePullSecrets:
@@ -42,7 +42,7 @@ cp-helm-charts:
     enabled: true
     brokers: 3
     image: confluentinc/cp-enterprise-kafka
-    imageTag: 5.5.0
+    imageTag: 5.5.2
     ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
     ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
     imagePullSecrets:
@@ -80,7 +80,7 @@ cp-helm-charts:
   cp-schema-registry:
     enabled: true
     image: confluentinc/cp-schema-registry
-    imageTag: 5.5.0
+    imageTag: 5.5.2
     ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
     ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
     imagePullSecrets:
@@ -102,7 +102,7 @@ cp-helm-charts:
   cp-kafka-rest:
     enabled: false
     image: confluentinc/cp-kafka-rest
-    imageTag: 5.5.0
+    imageTag: 5.5.2
     ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
     ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
     imagePullSecrets:
@@ -126,7 +126,7 @@ cp-helm-charts:
     replicaCount: 3
     # This image adds specific connectors used by the EFD application
     image: lsstsqre/cp-kafka-connect
-    imageTag: 5.3.2
+    imageTag: 5.5.2-0.8.1
     ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
     ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
     imagePullSecrets:
@@ -153,7 +153,7 @@ cp-helm-charts:
   cp-ksql-server:
     enabled: false
     image: confluentinc/cp-ksql-server
-    imageTag: 5.5.0
+    imageTag: 5.5.2
     ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
     ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
     imagePullSecrets:
@@ -168,7 +168,7 @@ cp-helm-charts:
   cp-control-center:
     enabled: false
     image: confluentinc/cp-enterprise-control-center
-    imageTag: 5.5.0
+    imageTag: 5.5.2
     ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
     ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
     imagePullSecrets:
