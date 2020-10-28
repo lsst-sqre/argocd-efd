@@ -1,3 +1,4 @@
+{{- if (index .Values "kafka-connect-manager" "influxdbSink" "enabled") -}}
 apiVersion: ricoberger.de/v1alpha1
 kind: VaultSecret
 metadata:
@@ -16,3 +17,4 @@ spec:
   path: secret/dm/square/efd/{{ .Values.env }}/influxdb-auth
   {{- end }}
   type: Opaque
+{{- end -}}
