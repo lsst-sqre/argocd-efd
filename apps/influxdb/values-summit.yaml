@@ -109,5 +109,12 @@ influxdb:
   backup:
     enabled: false
 
+  ## Customize livenessProbe and readinessProbe
+  ## ref: https://docs.influxdata.com/influxdb/v1.7/tools/api/#ping-http-endpoint
+  ##
+  livenessProbe:
+    initialDelaySeconds: 120
+
+
 ## Environment where the EFD is deployed
 env: summit
