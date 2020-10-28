@@ -1,0 +1,4 @@
+dependencies:
+- name: telegraf
+  version: 1.7.31
+  repository: https://helm.influxdata.com/

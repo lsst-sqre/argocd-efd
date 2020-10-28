@@ -1,0 +1,20 @@
+{{- if (eq .Values.env "sandbox") -}}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: telegraf
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: telegraf
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: apps/telegraf
+    repoURL: https://github.com/lsst-sqre/argocd-efd
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values-{{ .Values.env }}.yaml
+{{- end -}}
