@@ -10,7 +10,7 @@ kafdrop:
   jvm:
     opts: "-Xms32M -Xmx64M"
   jmx:
-    port: 8686
+    port: 5556
 
   cmdArgs: "--message.format=AVRO --schemaregistry.connect=https://schema-registry-summit-efd.lsst.codes/"
 

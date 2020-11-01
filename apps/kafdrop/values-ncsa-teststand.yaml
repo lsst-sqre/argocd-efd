@@ -5,13 +5,6 @@ kafdrop:
   kafka:
     brokerConnect: cp-helm-charts-cp-kafka-headless.cp-helm-charts:9092
 
-  host: localhost
-
-  jvm:
-    opts: "-Xms32M -Xmx64M"
-  jmx:
-    port: 8686
-
   cmdArgs: "--message.format=AVRO --schemaregistry.connect=https://lsst-schema-registry-nts-efd.ncsa.illinois.edu/"
 
 env: ncsa-teststand
