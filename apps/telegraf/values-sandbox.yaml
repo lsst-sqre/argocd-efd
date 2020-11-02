@@ -2,6 +2,12 @@
 telegraf:
   ## Exposed telegraf configuration
   ## ref: https://docs.influxdata.com/telegraf/v1.13/administration/configuration/
+  env:
+    - name: TELEGRAF_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: telegraf-secret
+          key: password
   config:
     # global_tags:
     #   cluster: "mycluster"
@@ -19,18 +25,23 @@ telegraf:
       logfile: ""
       hostname: "$HOSTNAME"
       omit_hostname: false
-
+    inputs:
+      - prometheus:
+          urls:
+            - "http://cp-helm-charts-cp-kafka-connect-jmx.cp-helm-charts:5556/metrics"
+            - "http://cp-helm-charts-cp-schema-registry-jmx.cp-helm-charts:5556/metrics"
+          metric_version: 2
     outputs:
       - influxdb:
           urls:
-            - "http://influxdb-0.influxdb.influxdb.svc.cluster.local:8086"
+            - "http://influxdb.influxdb:8086"
           database: "telegraf"
           retention_policy: ""
           timeout: "5s"
           username: "telegraf"
+          password: "$TELEGRAF_PASSWORD"
           user_agent: "telegraf"
           insecure_skip_verify: false
-
     monitor_self: false
 
 ## Environment where the EFD is deployed

@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+  labels:
+    app: cp-kafka-connect
+    app.kubernetes.io/instance: cp-helm-charts
+    chart: cp-kafka-connect-0.1.0
+    heritage: Tiller
+    release: cp-helm-charts
+  name: cp-helm-charts-cp-kafka-connect-jmx
+  namespace: cp-helm-charts
+spec:
+  ports:
+  - name: kafka-connect-jmx
+    port: 5556
+    protocol: TCP
+    targetPort: 5556
+  selector:
+    app: cp-kafka-connect
+    release: cp-helm-charts
+  sessionAffinity: None
+  type: ClusterIP
