@@ -3,8 +3,8 @@ chronograf:
   ##
   image:
     repository: "quay.io/influxdb/chronograf"
-    tag: "1.8.7"
-    pullPolicy: "Always"
+    tag: "1.8.8"
+    pullPolicy: IfNotPresent
 
   ## Specify a service type
   ## ClusterIP is default
