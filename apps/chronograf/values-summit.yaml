@@ -54,5 +54,10 @@ chronograf:
     github:
       enabled: true
 
+  ## Extra environment variables that will be passed onto deployment pods
+  env:
+    HOST_PAGE_DISABLED: true
+
+
 ## Environment where the EFD is deployed
 env: summit
