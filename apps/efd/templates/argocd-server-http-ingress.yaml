@@ -6,16 +6,9 @@ metadata:
   name: argocd-server-http-ingress
   namespace: argocd
   annotations:
-    {{if or (eq .Values.env "ncsa-teststand") (eq .Values.env "sandbox") -}}
+    kubernetes.io/ingress.class: "nginx"
     # This configuration avoids the 'too many redirect error' seen in k8s
-    kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    {{- else -}}
-    # See https://argoproj.github.io/argo-cd/operator-manual/ingress
-    kubernetes.io/ingress.class: "nginx"
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
-    {{- end}}
 spec:
   rules:
   - http:
