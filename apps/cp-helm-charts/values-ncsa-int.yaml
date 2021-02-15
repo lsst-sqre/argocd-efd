@@ -7,7 +7,7 @@ cp-helm-charts:
     enabled: true
     servers: 3
     image: confluentinc/cp-zookeeper
-    imageTag: 5.3.1
+    imageTag: 5.5.2
     ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
     ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
     imagePullSecrets:
@@ -42,7 +42,7 @@ cp-helm-charts:
     enabled: true
     brokers: 3
     image: confluentinc/cp-enterprise-kafka
-    imageTag: 5.3.1
+    imageTag: 5.5.2
     ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
     ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
     imagePullSecrets:
@@ -66,17 +66,14 @@ cp-helm-charts:
     nodeport:
       enabled: true
 
-    loadbalancers: 1
-
-    loadbalancer:
-      enabled: false
-      port: 9094
 
     ## Kafka Server properties
     ## ref: https://kafka.apache.org/documentation/#configuration
     configurationOverrides:
       offsets.retention.minutes: 1440
       log.retention.hours: 24
+      log.retention.bytes: "100000000000"
+      log.cleaner.delete.retention.ms: "86400000"
 
 
   ## ------------------------------------------------------
@@ -85,7 +82,7 @@ cp-helm-charts:
   cp-schema-registry:
     enabled: true
     image: confluentinc/cp-schema-registry
-    imageTag: 5.3.1
+    imageTag: 5.5.2
     ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
     ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
     imagePullSecrets:
@@ -109,9 +106,9 @@ cp-helm-charts:
   ## REST Proxy
   ## ------------------------------------------------------
   cp-kafka-rest:
-    enabled: true
+    enabled: false
     image: confluentinc/cp-kafka-rest
-    imageTag: 5.3.1
+    imageTag: 5.5.2
     ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
     ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
     imagePullSecrets:
@@ -134,7 +131,7 @@ cp-helm-charts:
     enabled: true
     # This image adds specific connectors used by the EFD application
     image: lsstsqre/cp-kafka-connect
-    imageTag: 5.3.2
+    imageTag: 5.5.2-0.8.2-tickets-DM-21334
     ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
     ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
     imagePullSecrets:
@@ -159,9 +156,9 @@ cp-helm-charts:
   ## KSQL Server
   ## ------------------------------------------------------
   cp-ksql-server:
-    enabled: true
+    enabled: false
     image: confluentinc/cp-ksql-server
-    imageTag: 5.3.1
+    imageTag: 5.5.2
     ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
     ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
     imagePullSecrets:
@@ -172,7 +169,22 @@ cp-helm-charts:
 
 
   cp-control-center:
-    enabled: false
+    image: confluentinc/cp-enterprise-control-center
+    imageTag: 5.5.2
+    ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
+    ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+    imagePullSecrets:
+    #  - name: "regcred"
+    heapOptions: "-Xms512M -Xmx512M"
+    resources: {}
+    ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
+    ## and remove the curly braces after 'resources:'
+    #  limits:
+    #   cpu: 100m
+    #   memory: 128Mi
+    #  requests:
+    #   cpu: 100m
+    #   memory: 128Mi
 
 ## Environment where the EFD is deployed
 env: ncsa-int
