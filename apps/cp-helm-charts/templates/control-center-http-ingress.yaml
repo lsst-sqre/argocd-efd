@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: control-center-http-ingress
+  namespace: cp-helm-charts
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          serviceName: cp-helm-charts-cp-control-center
+          servicePort: 9021
+    {{if eq .Values.env "ncsa-int" -}}
+    host: lsst-control-center-int-efd.ncsa.illinois.edu
+    {{- else if eq .Values.env "ncsa-stable" -}}
+    host: lsst-control-center-efd.ncsa.illinois.edu
+    {{- end }}
+  tls:
+  - hosts:
+    {{if eq .Values.env "ncsa-int" -}}
+    - lsst-control-center-int-efd.ncsa.illinois.edu
+    {{- else if eq .Values.env "ncsa-stable" -}}
+    - lsst-control-center-efd.ncsa.illinois.edu
+    {{- end }}
+    secretName: tls-certs
