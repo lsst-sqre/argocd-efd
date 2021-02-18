@@ -1,19 +1,20 @@
 ---
 kafka-connect-manager:
   image:
-    repository: lsstsqre/kafka-connect-manager
-    tag: v0.7.0
+    repository: lsstsqre/kafkaconnect
+    tag: master
     pullPolicy: Always
 
-  influxdb:
+  influxdbSink:
     enabled: true
     name: influxdb-sink
-    influxdbUrl: "http://influxdb-0.influxdb.influxdb.svc.cluster.local:8086"
-    database: "efd"
-    filter: "lsst.sal.*"
-    tasks: 1
+    connectInfluxUrl: "http://influxdb.influxdb:8086"
+    connectInfluxDb: "efd"
+    connectInfluxErrorPolicy: NOOP
+    topicRegex: "lsst.sal.*"
+    tasksMax: 1
     timestamp: private_sndStamp
-    existingSecret: influxdb-auth
+    influxSecret: influxdb-auth
 
 ## Environment where the EFD is deployed
 env: ncsa-stable
