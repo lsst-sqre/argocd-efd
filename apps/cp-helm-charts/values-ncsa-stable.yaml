@@ -129,6 +129,7 @@ cp-helm-charts:
   ## ------------------------------------------------------
   cp-kafka-connect:
     enabled: true
+    replicaCount: 3
     # This image adds specific connectors used by the EFD application
     image: lsstsqre/cp-kafka-connect
     imageTag: 5.5.2-0.8.2-tickets-DM-21334
