@@ -169,7 +169,7 @@ cp-helm-charts:
 
 
   cp-control-center:
-    enabled: true
+    enabled: false
     image: confluentinc/cp-enterprise-control-center
     imageTag: 5.5.2
     ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
