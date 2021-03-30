@@ -1,0 +1,67 @@
+---
+telegraf-ds:
+  ## Exposed telegraf configuration
+  ## ref: https://docs.influxdata.com/telegraf/v1.13/administration/configuration/
+  env:
+    - name: TELEGRAF_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: telegraf-secret
+          key: password
+
+  override_config:
+    toml: |+
+      [agent]
+        interval = "10s"
+        round_interval = true
+        metric_batch_size = 1000
+        metric_buffer_limit = 10000
+        collection_jitter = "0s"
+        flush_interval = "10s"
+        flush_jitter = "0s"
+        precision =  ""
+        debug = false
+        quiet = false
+        logfile = ""
+        hostname = "$HOSTNAME"
+        omit_hostname = false
+
+      [[inputs.diskio]]
+      [[inputs.kernel]]
+      [[inputs.mem]]
+      [[inputs.net]]
+      [[inputs.processes]]
+      [[inputs.swap]]
+      [[inputs.system]]
+      [[inputs.cpu]]
+        percpu = true
+        totalcpu = true
+        collect_cpu_time = false
+        report_active = false
+      [[inputs.disk]]
+        ignore_fs = ["tmpfs", "devtmpfs", "devfs", "iso9660", "overlay", "aufs", "squashfs"]
+
+      [[inputs.docker]]
+        endpoint = "unix:///var/run/docker.sock"
+
+      [[inputs.kubernetes]]
+        url = "https://$HOSTIP:10250"
+        bearer_token = "/run/secrets/kubernetes.io/serviceaccount/token"
+        insecure_skip_verify = true
+
+      [[outputs.influxdb]]
+        database = "telegraf"
+        insecure_skip_verify = false
+        password = "$TELEGRAF_PASSWORD"
+        retention_policy = ""
+        timeout = "5s"
+        urls = [
+          "http://influxdb.influxdb:8086"
+        ]
+        user_agent = "telegraf"
+        username = "telegraf"
+
+    monitor_self: false
+
+## Environment where the EFD is deployed
+env: ncsa-int
