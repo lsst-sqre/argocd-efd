@@ -8,6 +8,12 @@ telegraf:
         secretKeyRef:
           name: telegraf-secret
           key: password
+# This pulls HOSTNAME from the node, not the pod.
+    - name: HOSTNAME
+      valueFrom:
+        fieldRef:
+          fieldPath: spec.nodeName
+
   config:
     # global_tags:
     #   cluster: "mycluster"
