@@ -25,6 +25,7 @@ telegraf:
       logfile: ""
       hostname: "$HOSTNAME"
       omit_hostname: false
+    processors: {}
     inputs:
       - prometheus:
           urls:
@@ -42,7 +43,6 @@ telegraf:
           password: "$TELEGRAF_PASSWORD"
           user_agent: "telegraf"
           insecure_skip_verify: false
-    monitor_self: false
 
 ## Environment where the EFD is deployed
 env: ncsa-int
