@@ -138,7 +138,7 @@ cp-helm-charts:
     imagePullSecrets:
     #  - name: "regcred"
 
-    heapOptions: "-Xms512M -Xmx512M"
+    heapOptions: "-Xms2048M -Xmx2048M"
     resources: {}
     ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
     ## and remove the curly braces after 'resources:'
