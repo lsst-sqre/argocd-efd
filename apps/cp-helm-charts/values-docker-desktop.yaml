@@ -1,0 +1,172 @@
+---
+cp-helm-charts:
+  ## ------------------------------------------------------
+  ## Zookeeper
+  ## ------------------------------------------------------
+  cp-zookeeper:
+    enabled: true
+    servers: 3
+    image: confluentinc/cp-zookeeper
+    imageTag: 5.5.2
+    ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
+    ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+    imagePullSecrets:
+    #  - name: "regcred"
+    heapOptions: "-Xms512M -Xmx512M"
+    persistence:
+      enabled: false
+    resources: {}
+    ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
+    ## and remove the curly braces after 'resources:'
+    #  limits:
+    #   cpu: 100m
+    #   memory: 128Mi
+    #  requests:
+    #   cpu: 100m
+    #   memory: 128Mi
+
+  ## ------------------------------------------------------
+  ## Kafka
+  ## ------------------------------------------------------
+  cp-kafka:
+    enabled: true
+    brokers: 3
+    image: confluentinc/cp-enterprise-kafka
+    imageTag: 5.5.2
+    ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
+    ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+    imagePullSecrets:
+    #  - name: "regcred"
+    heapOptions: "-Xms512M -Xmx512M"
+    persistence:
+      enabled: false
+    resources: {}
+    ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
+    ## and remove the curly braces after 'resources:'
+    #  limits:
+    #   cpu: 100m
+    #   memory: 128Mi
+    #  requests:
+    #   cpu: 100m
+    #   memory: 128Mi
+
+    ## Kafka Server properties
+    ## ref: https://kafka.apache.org/documentation/#configuration
+    configurationOverrides:
+      offsets.retention.minutes: 60
+      log.retention.hours: 1
+      log.retention.bytes: "42949672960"
+
+
+
+  ## ------------------------------------------------------
+  ## Schema Registry
+  ## ------------------------------------------------------
+  cp-schema-registry:
+    enabled: true
+    image: confluentinc/cp-schema-registry
+    imageTag: 5.5.2
+    ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
+    ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+    imagePullSecrets:
+    #  - name: "regcred"
+    heapOptions: "-Xms512M -Xmx512M"
+    resources: {}
+    ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
+    ## and remove the curly braces after 'resources:'
+    #  limits:
+    #   cpu: 100m
+    #   memory: 128Mi```
+    #  requests:
+    #   cpu: 100m
+    #   memory: 128Mi
+
+  ## ------------------------------------------------------
+  ## REST Proxy
+  ## ------------------------------------------------------
+  cp-kafka-rest:
+    enabled: false
+    image: confluentinc/cp-kafka-rest
+    imageTag: 5.5.2
+    ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
+    ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+    imagePullSecrets:
+    #  - name: "regcred"
+    heapOptions: "-Xms512M -Xmx512M"
+    resources: {}
+    ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
+    ## and remove the curly braces after 'resources:'
+    #  limits:
+    #   cpu: 100m
+    #   memory: 128Mi
+    #  requests:
+    #   cpu: 100m
+    #   memory: 128Mi
+
+  ## ------------------------------------------------------
+  ## Kafka Connect
+  ## ------------------------------------------------------
+  cp-kafka-connect:
+    enabled: true
+    # This image adds specific connectors used by the EFD application
+    image: lsstsqre/cp-kafka-connect
+    imageTag: 5.5.2-0.9-tickets-DM-21334
+    ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
+    ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+    imagePullSecrets:
+    #  - name: "regcred"
+
+    heapOptions: "-Xms512M -Xmx512M"
+    resources: {}
+    ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
+    ## and remove the curly braces after 'resources:'
+    #  limits:
+    #   cpu: 100m
+    #   memory: 128Mi
+    #  requests:
+    #   cpu: 100m
+    #   memory: 128Mi
+
+    configurationOverrides:
+      "plugin.path": "/usr/share/java,/etc/landoop/jars/lib"
+
+
+  ## ------------------------------------------------------
+  ## KSQL Server
+  ## ------------------------------------------------------
+  cp-ksql-server:
+    enabled: false
+    image: confluentinc/cp-ksql-server
+    imageTag: 5.5.2
+    ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
+    ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+    imagePullSecrets:
+    #  - name: "regcred"
+    heapOptions: "-Xms512M -Xmx512M"
+    ksql:
+      headless: false
+
+  ## ------------------------------------------------------
+  ## Control Center
+  ## ------------------------------------------------------
+  cp-control-center:
+    enabled: false
+    image: confluentinc/cp-enterprise-control-center
+    imageTag: 5.5.2
+    ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
+    ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+    imagePullSecrets:
+    #  - name: "regcred"
+    heapOptions: "-Xms512M -Xmx512M"
+    resources: {}
+    ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
+    ## and remove the curly braces after 'resources:'
+    #  limits:
+    #   cpu: 100m
+    #   memory: 128Mi
+    #  requests:
+    #   cpu: 100m
+    #   memory: 128
+
+## Environment where the EFD is deployed
+env: docker-desktop
