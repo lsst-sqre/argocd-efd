@@ -37,7 +37,7 @@ chronograf:
       memory: 1024Mi
       cpu: 1
     limits:
-      memory: 16Gi
+      memory: 8Gi
       cpu: 4
 
   ## Configure the ingress object to hook into existing infastructure
