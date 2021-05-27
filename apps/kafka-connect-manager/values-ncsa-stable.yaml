@@ -12,7 +12,7 @@ kafka-connect-manager:
     connectInfluxDb: "efd"
     connectInfluxErrorPolicy: NOOP
     topicRegex: "lsst.sal.*"
-    tasksMax: 10
+    tasksMax: 60
     timestamp: private_sndStamp
     influxSecret: influxdb-auth
 
