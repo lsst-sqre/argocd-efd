@@ -1,2 +1,2 @@
-name: influxdb-sink
+name: kafka-connect-manager
 version: 0.1.0

@@ -2,19 +2,42 @@
 kafka-connect-manager:
   image:
     repository: lsstsqre/kafkaconnect
-    tag: master
+    tag: tickets-DM-30456
     pullPolicy: Always
 
   influxdbSink:
-    enabled: true
-    name: influxdb-sink
-    connectInfluxUrl: "http://influxdb.influxdb:8086"
-    connectInfluxDb: "efd"
-    connectInfluxErrorPolicy: NOOP
-    topicRegex: "lsst.sal.*"
-    tasksMax: 1
-    timestamp: private_sndStamp
-    influxSecret: influxdb-auth
+    influxdb-sink-main:
+      name: influxdb-sink-main
+      enabled: true
+      connectInfluxUrl: "http://influxdb.influxdb:8086"
+      connectInfluxDb: "efd"
+      influxSecret: influxdb-auth
+      tasksMax: 1
+      topicRegex: "lsst.sal.WeatherStation.*"
+      autoUpdate: true
+      checkInterval: "15000"
+      excludedTopicRegex: "lsst.sal.WeatherStation.wind.*"
+      timestamp: private_sndStamp
+      connectInfluxErrorPolicy: NOOP
+      connectInfluxMaxRetries: "10"
+      connectInfluxRetryInterval: "60000"
+      connectProgressEnabled: false
+    influxdb-sink-wind:
+      name: influxdb-sink-wind
+      enabled: true
+      connectInfluxUrl: "http://influxdb.influxdb:8086"
+      connectInfluxDb: "efd"
+      influxSecret: influxdb-auth
+      tasksMax: 1
+      topicRegex: "lsst.sal.WeatherStation.wind.*"
+      autoUpdate: true
+      checkInterval: "15000"
+      excludedTopicRegex: ""
+      timestamp: private_sndStamp
+      connectInfluxErrorPolicy: NOOP
+      connectInfluxMaxRetries: "10"
+      connectInfluxRetryInterval: "60000"
+      connectProgressEnabled: false
 
 ## Environment where the EFD is deployed
 env: ncsa-int
