@@ -16,7 +16,7 @@ kafka-connect-manager:
       connectInfluxDb: "efd"
       influxSecret: influxdb-auth
       tasksMax: 1
-      topicRegex: "lsst.sal.*"
+      topicRegex: "lsst.sal.*logevent_heartbeat"
       autoUpdate: true
       checkInterval: "15000"
       excludedTopicRegex: "lsst.sal.WeatherStation.*"
@@ -41,6 +41,19 @@ kafka-connect-manager:
       connectInfluxMaxRetries: "10"
       connectInfluxRetryInterval: "60000"
       connectProgressEnabled: false
+
+  mirrorMaker2:
+    enabled: true
+    name: "replicator"
+    sourceClusterBootstrapServers: "kafka-0-summit-efd.lsst.codes:31090"
+    sourceClusterAlias: ""
+    replicationPolicySeparator: ""
+    targetClusterBootstrapServers: "lsst-kafka-0-int-efd.ncsa.illinois.edu:31090"
+    targetClusterAlias: "int"
+    topicRegex: "_schemas,lsst.sal.*logevent_heartbeat,lsst.sal.WeatherStation.*"
+    tasksMax: 1
+    syncTopicAclsEnabled: false
+
 
 ## Environment where the EFD is deployed
 env: ncsa-int
