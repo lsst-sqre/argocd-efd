@@ -1,4 +1,4 @@
-{{- if (index .Values "kafka-connect-manager" "influxdbSink" "enabled") -}}
+{{- if (index .Values "kafka-connect-manager" "secrets" "influxdb-auth" ) -}}
 apiVersion: ricoberger.de/v1alpha1
 kind: VaultSecret
 metadata:

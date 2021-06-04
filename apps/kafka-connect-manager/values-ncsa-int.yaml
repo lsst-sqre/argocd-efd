@@ -5,31 +5,34 @@ kafka-connect-manager:
     tag: tickets-DM-30456
     pullPolicy: Always
 
+  secrets:
+    influxdb-auth: true
+
   influxdbSink:
-    influxdb-sink-main:
-      name: influxdb-sink-main
+    influxdb-main:
+      name: influxdb-main
+      enabled: true
+      connectInfluxUrl: "http://influxdb.influxdb:8086"
+      connectInfluxDb: "efd"
+      influxSecret: influxdb-auth
+      tasksMax: 1
+      topicRegex: "lsst.sal.*"
+      autoUpdate: true
+      checkInterval: "15000"
+      excludedTopicRegex: "lsst.sal.WeatherStation.*"
+      timestamp: private_sndStamp
+      connectInfluxErrorPolicy: NOOP
+      connectInfluxMaxRetries: "10"
+      connectInfluxRetryInterval: "60000"
+      connectProgressEnabled: false
+    influxdb-weather-station:
+      name: influxdb-weather-station
       enabled: true
       connectInfluxUrl: "http://influxdb.influxdb:8086"
       connectInfluxDb: "efd"
       influxSecret: influxdb-auth
       tasksMax: 1
       topicRegex: "lsst.sal.WeatherStation.*"
-      autoUpdate: true
-      checkInterval: "15000"
-      excludedTopicRegex: "lsst.sal.WeatherStation.wind.*"
-      timestamp: private_sndStamp
-      connectInfluxErrorPolicy: NOOP
-      connectInfluxMaxRetries: "10"
-      connectInfluxRetryInterval: "60000"
-      connectProgressEnabled: false
-    influxdb-sink-wind:
-      name: influxdb-sink-wind
-      enabled: true
-      connectInfluxUrl: "http://influxdb.influxdb:8086"
-      connectInfluxDb: "efd"
-      influxSecret: influxdb-auth
-      tasksMax: 1
-      topicRegex: "lsst.sal.WeatherStation.wind.*"
       autoUpdate: true
       checkInterval: "15000"
       excludedTopicRegex: ""
