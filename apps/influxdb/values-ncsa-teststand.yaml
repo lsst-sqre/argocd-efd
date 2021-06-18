@@ -105,6 +105,11 @@ influxdb:
       enabled: true
       auth_enabled: true
       max_row_limit: 0
+    coordinator:
+      write_timeout: "60s"
+      max_concurrent_queries: 10
+      query_timeout: "900s"
+      log_queries_after: "15s"
 
   backup:
     enabled: false
