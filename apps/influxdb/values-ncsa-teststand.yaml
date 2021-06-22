@@ -110,6 +110,9 @@ influxdb:
       max_concurrent_queries: 10
       query_timeout: "900s"
       log_queries_after: "15s"
+    continuous_queries:
+      enabled: false
+
 
   backup:
     enabled: false
