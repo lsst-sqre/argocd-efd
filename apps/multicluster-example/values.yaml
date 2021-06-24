@@ -1,6 +1,0 @@
-spec:
-  destination:
-    server: https://35.238.190.86
-  project: multicluster-example
-  source:
-    repoURL: https://github.com/lsst-sqre/argocd-efd

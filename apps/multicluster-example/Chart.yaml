@@ -1,4 +1,0 @@
-apiVersion: v1
-description: Destination server is different from where Argo CD is running
-name: multicluster-example
-version: 0.1.0
