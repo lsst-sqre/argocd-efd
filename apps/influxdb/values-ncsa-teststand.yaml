@@ -101,7 +101,6 @@ influxdb:
   config:
     data:
       cache_max_memory_size: 0
-      cache_snapshot_memory_size: 1048576
     http:
       enabled: true
       auth_enabled: true
