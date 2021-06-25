@@ -101,6 +101,7 @@ influxdb:
   config:
     data:
       cache_max_memory_size: 0
+      wal_fsync_delay: "100ms"
     http:
       enabled: true
       auth_enabled: true
