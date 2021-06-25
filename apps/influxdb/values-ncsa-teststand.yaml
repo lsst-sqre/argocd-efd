@@ -102,6 +102,7 @@ influxdb:
     data:
       cache_max_memory_size: 0
       wal_fsync_delay: "100ms"
+      trace_logging_enabled: true
     http:
       enabled: true
       auth_enabled: true
