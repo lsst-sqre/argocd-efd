@@ -32,11 +32,8 @@ telegraf-ds:
         omit_hostname = false
 
       [[inputs.diskio]]
-      [[inputs.kernel]]
       [[inputs.mem]]
       [[inputs.net]]
-      [[inputs.processes]]
-      [[inputs.swap]]
       [[inputs.system]]
       [[inputs.cpu]]
         percpu = true

@@ -32,11 +32,8 @@ telegraf-ds:
         omit_hostname = false
 
       [[inputs.diskio]]
-      [[inputs.kernel]]
       [[inputs.mem]]
       [[inputs.net]]
-      [[inputs.processes]]
-      [[inputs.swap]]
       [[inputs.system]]
       [[inputs.cpu]]
         percpu = true
@@ -45,9 +42,6 @@ telegraf-ds:
         report_active = false
       [[inputs.disk]]
         ignore_fs = ["tmpfs", "devtmpfs", "devfs", "iso9660", "overlay", "aufs", "squashfs"]
-
-      [[inputs.docker]]
-        endpoint = "unix:///var/run/docker.sock"
 
       [[inputs.kube_inventory]]
         url = "https://kubernetes.default.svc"
