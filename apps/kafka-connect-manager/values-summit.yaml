@@ -9,8 +9,8 @@ kafka-connect-manager:
     influxdb-auth: true
 
   influxdbSink:
-    influxdb-main:
-      name: influxdb-main
+    influxdb-sink:
+      name: influxdb-sink
       enabled: true
       connectInfluxUrl: "http://influxdb.influxdb:8086"
       connectInfluxDb: "efd"
