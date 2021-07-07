@@ -2,19 +2,28 @@
 kafka-connect-manager:
   image:
     repository: lsstsqre/kafkaconnect
-    tag: 0.8.1
+    tag: 0.9.1
     pullPolicy: Always
 
+  secrets:
+    influxdb-auth: true
+
   influxdbSink:
-    enabled: true
-    name: influxdb-sink
-    connectInfluxUrl: "http://influxdb-0.influxdb.influxdb.svc.cluster.local:8086"
-    connectInfluxDb: "efd"
-    connectInfluxErrorPolicy: NOOP
-    topicRegex: "lsst.sal.*"
-    tasksMax: 10
-    timestamp: private_sndStamp
-    influxSecret: influxdb-auth
+    influxdb-main:
+      name: influxdb-main
+      enabled: true
+      connectInfluxUrl: "http://influxdb-0.influxdb.influxdb.svc.cluster.local:8086"
+      connectInfluxDb: "efd"
+      influxSecret: influxdb-auth
+      tasksMax: 10
+      topicRegex: "lsst.sal.*"
+      autoUpdate: true
+      checkInterval: "15000"
+      timestamp: private_sndStamp
+      connectInfluxErrorPolicy: NOOP
+      connectInfluxMaxRetries: "10"
+      connectInfluxRetryInterval: "60000"
+      connectProgressEnabled: false
 
 ## Environment where the EFD is deployed
 env: ncsa-teststand
