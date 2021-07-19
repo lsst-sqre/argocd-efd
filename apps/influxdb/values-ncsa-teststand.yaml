@@ -39,7 +39,7 @@ influxdb:
     ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
     ##   GKE, AWS & OpenStack)
     ##
-    storageClass: nfs-path
+    storageClass: local-path
     accessMode: ReadWriteOnce
     size: 50Gi
 

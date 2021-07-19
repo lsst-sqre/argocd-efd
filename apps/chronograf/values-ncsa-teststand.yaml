@@ -25,7 +25,7 @@ chronograf:
     ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
     ##   GKE, AWS & OpenStack)
     ##
-    storageClass: nfs-path
+    storageClass: local-path
     accessMode: ReadWriteOnce
     size: 50Gi
 
@@ -68,7 +68,7 @@ chronograf:
   ## Extra environment variables that will be passed onto deployment pods
   env:
     HOST_PAGE_DISABLED: true
-  
+
 
 ## Environment where the EFD is deployed
 env: ncsa-teststand
