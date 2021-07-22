@@ -19,20 +19,20 @@ kafka-connect-manager:
       topicRegex: "lsst.sal.*"
       autoUpdate: true
       checkInterval: "15000"
-      excludedTopicRegex: "lsst.sal.ATArchiver.*"
+      excludedTopicRegex: "lsst.sal.MTM2.*"
       timestamp: private_sndStamp
       connectInfluxErrorPolicy: NOOP
       connectInfluxMaxRetries: "10"
       connectInfluxRetryInterval: "60000"
       connectProgressEnabled: false
     influxdb-atarchiver:
-      name: influxdb-atarchiver
+      name: influxdb-mtm2
       enabled: true
       connectInfluxUrl: "http://influxdb.influxdb:8086"
       connectInfluxDb: "efd"
       influxSecret: influxdb-auth
       tasksMax: 10
-      topicRegex: "lsst.sal.ATArchiver.*"
+      topicRegex: "lsst.sal.MTM2.*"
       autoUpdate: true
       checkInterval: "15000"
       timestamp: private_sndStamp
