@@ -58,6 +58,7 @@ chronograf:
   env:
     HOST_PAGE_DISABLED: true
     AUTH_DURATION: 24h
+    CUSTOM_AUTO_REFRESH: "500ms=500;1s=1000"
 
 
 ## Environment where the EFD is deployed
