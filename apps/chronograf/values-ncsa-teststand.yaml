@@ -3,7 +3,7 @@ chronograf:
   ##
   image:
     repository: "quay.io/influxdb/chronograf"
-    tag: "1.8.10"
+    tag: "1.9.0"
     pullPolicy: IfNotPresent
 
   ## Specify a service type
@@ -37,7 +37,7 @@ chronograf:
       memory: 1024Mi
       cpu: 1
     limits:
-      memory: 8Gi
+      memory: 32Gi
       cpu: 4
 
   ## Configure the ingress object to hook into existing infastructure
@@ -68,6 +68,7 @@ chronograf:
   ## Extra environment variables that will be passed onto deployment pods
   env:
     HOST_PAGE_DISABLED: true
+    CUSTOM_AUTO_REFRESH: "500ms=500;1s=1000"
 
 
 ## Environment where the EFD is deployed
