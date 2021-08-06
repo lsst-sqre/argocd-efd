@@ -31,7 +31,6 @@ telegraf-ds:
         hostname = "$HOSTNAME"
         omit_hostname = false
 
-      [[inputs.diskio]]
       [[inputs.mem]]
       [[inputs.net]]
       [[inputs.system]]
