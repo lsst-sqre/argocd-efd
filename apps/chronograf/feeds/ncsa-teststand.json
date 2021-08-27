@@ -2,9 +2,9 @@
     "version": "https://jsonfeed.org/version/1.1",
     "user_comment": "EFD status feed by SQuaRE/Rubin Observatory.",
     "home_page_url": "https://lsst.org",
-    "feed_url": "https://lsst-sqre.github.io/argocd-efd/apps/chronograf/feeds/ncsa-int.json",
-    "title": "NCSA Int EFD status",
-    "description": "Status for the EFD deployment at NCSA Int.",
+    "feed_url": "https://lsst-sqre.github.io/argocd-efd/apps/chronograf/feeds/ncsa-teststand.json",
+    "title": "NTS EFD status",
+    "description": "Status for the EFD deployment at NCSA TestStand.",
     "items": [
         {
             "id": "2",
