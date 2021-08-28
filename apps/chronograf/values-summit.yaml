@@ -68,7 +68,8 @@ chronograf:
   ## Extra environment variables that will be passed onto deployment pods
   env:
     HOST_PAGE_DISABLED: true
-    CUSTOM_AUTO_REFRESH: "500ms=500;1s=1000"
+    CUSTOM_AUTO_REFRESH: "1s=1000"
+    STATUS_FEED_URL: "https://lsst-sqre.github.io/argocd-efd/apps/chronograf/feeds/summit.json"
 
 
 ## Environment where the EFD is deployed
