@@ -8,11 +8,11 @@
     "items": [
         {
             "id": "3",
-            "url": "",
+            "url": "https://github.com/influxdata/chronograf/issues/5782",
             "title": "Chronograf display issues with Safari",
             "content_text": "We have seen issues rendering Tables and Single Stat panels on dashboard cells with recent versions of Safari. We recommend using Chrome for a better experience. ",
-            "date_published": "2021-08-30T02:00:01-07:00",
-            "date_modified": "2021-08-30T02:00:01-07:00",
+            "date_published": "2021-08-04T02:00:01-07:00",
+            "date_modified": "2021-08-04T02:00:01-07:00",
             "image": "",
             "authors": [
                 {
@@ -22,7 +22,7 @@
         },
         {
             "id": "2",
-            "url": "",
+            "url": "https://docs.influxdata.com/chronograf/v1.9/guides/create-a-dashboard/#configure-dashboard-wide-settings",
             "title": "Custom auto-refresh intervals",
             "content_text": "In Chronograf 1.9.0 we can now configure custom auto-refresh intervals for dashboards. We added the option to refresh dashboard contents every 1s. However, use this feature with caution if your dashboard has too many cells or if you are querying data on large time ranges.",
             "date_published": "2021-08-04T02:00:01-07:00",
@@ -38,7 +38,7 @@
             "id": "1",
             "url": "https://www.influxdata.com/blog/release-announcement-chronograf-1-9-0/",
             "title": "Chronograf upgraded to version 1.9.0",
-            "content_text": "Chronograf 1.9.0 brings a number of new features and improvements, see https://www.influxdata.com/blog/release-announcement-chronograf-1-9-0/",
+            "content_text": "Chronograf 1.9.0 brings a number of new features and improvements, see blog post linked above.",
             "date_published": "2021-08-04T02:00:01-07:00",
             "date_modified": "2021-08-04T02:00:01-07:00",
             "image": "",
