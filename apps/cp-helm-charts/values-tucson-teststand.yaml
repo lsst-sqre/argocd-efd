@@ -19,12 +19,12 @@ cp-helm-charts:
       ## production servers this number should likely be much larger.
       ##
       ## Size for Data dir, where ZooKeeper will store the in-memory database snapshots.
-      dataDirSize: 15Gi
-      dataDirStorageClass: local-path
+      dataDirSize: 100Gi
+      dataDirStorageClass: rook-ceph-block
 
       ## Size for data log dir, which is a dedicated log device to be used, and helps avoid competition between logging and snaphots.
-      dataLogDirSize: 15Gi
-      dataLogDirStorageClass: local-path
+      dataLogDirSize: 100Gi
+      dataLogDirStorageClass: rook-ceph-block
     resources: {}
     ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
     ## and remove the curly braces after 'resources:'
@@ -50,8 +50,8 @@ cp-helm-charts:
     heapOptions: "-Xms512M -Xmx512M"
     persistence:
       enabled: true
-      size: 15Gi
-      storageClass: local-path
+      size: 300Gi
+      storageClass: rook-ceph-block
       disksPerBroker: 1
     resources: {}
     ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
@@ -71,6 +71,10 @@ cp-helm-charts:
     configurationOverrides:
       offsets.retention.minutes: 120
       log.retention.hours: 2
+      # 100MB
+      log.retention.bytes: "107374182400"
+      # 2h
+      log.cleaner.delete.retention.ms: "7200000"
 
 
   ## ------------------------------------------------------
@@ -124,7 +128,7 @@ cp-helm-charts:
     enabled: false
     # This image adds specific connectors used by the EFD application
     image: lsstsqre/cp-kafka-connect
-    imageTag: 5.5.2-0.8.2-tickets-DM-21334
+    imageTag: 5.5.2-0.9.1
     ## Optionally specify an array of imagePullSecrets. Secrets must be manually created in the namespace.
     ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
     imagePullSecrets:

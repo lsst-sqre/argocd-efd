@@ -12,6 +12,8 @@ spec:
   path: secret/k8s_operator/lsst-lsp-stable.ncsa.illinois.edu/efd/tls-certs
   {{- else if eq .Values.env "base" }}
   path: secret/k8s_operator/base-lsp.lsst.codes/efd/tls-certs
+  {{- else if eq .Values.env "tucson-teststand" }}
+  path: secret/k8s_operator/tucson-teststand.lsst.codes/efd/tls-certs
   {{- else }}
   path: secret/dm/square/efd/{{ .Values.env }}/tls-certs
   {{- end }}

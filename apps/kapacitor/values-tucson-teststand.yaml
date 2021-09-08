@@ -4,7 +4,7 @@ kapacitor:
   ##
   image:
     repository: "kapacitor"
-    tag: "1.5.6"
+    tag: "1.5.9"
     pullPolicy: "IfNotPresent"
 
   ## Specify a service type, defaults to NodePort
@@ -12,6 +12,17 @@ kapacitor:
   ##
   service:
     type: ClusterIP
+
+  ## Configure resource requests and limits
+  ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+  ##
+  resources:
+    requests:
+      memory: 1024Mi
+      cpu: 1
+    limits:
+      memory: 4Gi
+      cpu: 2
 
   ## Persist data to a persistent volume
   ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
@@ -25,9 +36,9 @@ kapacitor:
     ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
     ##   GKE, AWS & OpenStack)
     ##
-    storageClass: "local-path"
+    storageClass: rook-ceph-block
     accessMode: ReadWriteOnce
-    size: 8Gi
+    size: 100Gi
     # existingClaim: ""
 
   ## Set the environment variables for kapacitor (or anything else you want to use)

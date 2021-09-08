@@ -1,0 +1,10 @@
+---
+kafdrop:
+  replicaCount: 1
+
+  kafka:
+    brokerConnect: cp-helm-charts-cp-kafka-headless.cp-helm-charts:9092
+
+  cmdArgs: "--message.format=AVRO --schemaregistry.connect=https://schema-registry-tucson-teststand-efd.ncsa.illinois.edu/"
+
+env: tucson-teststand
