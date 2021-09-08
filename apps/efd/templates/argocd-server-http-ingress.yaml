@@ -1,5 +1,4 @@
-{{- if and (ne .Values.env "ncsa-int") (ne .Values.env "ncsa-stable") (ne .Values.env "base") -}}
-# Argo CD is already deployed on ncsa-int, ncsa-stable and at the base
+{{- if or (eq .Values.env "summit") (eq .Values.env "sandbox") -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -15,24 +14,14 @@ spec:
       paths:
       - backend:
           serviceName: argocd-server
-          {{if or (eq .Values.env "ncsa-teststand") (eq .Values.env "sandbox") -}}
+          {{if (eq .Values.env "sandbox") -}}
           servicePort: https
           {{- else -}}
           servicePort: http
           {{- end}}
-    {{if eq .Values.env "ncsa-teststand" -}}
-    # The DNS is managed by NCSA breaking our convention for
-    # naming the services
-    host: lsst-argocd-nts-efd.ncsa.illinois.edu
-    {{- else -}}
     host: argocd-{{ .Values.env }}.lsst.codes
-    {{- end}}
   tls:
   - hosts:
-    {{if eq .Values.env "ncsa-teststand" -}}
-    - lsst-argocd-nts-efd.ncsa.illinois.edu
-    {{- else -}}
     - argocd-{{ .Values.env }}.lsst.codes
-    {{- end}}
     secretName: tls-certs
 {{- end -}}

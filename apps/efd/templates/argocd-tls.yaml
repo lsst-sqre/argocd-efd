@@ -1,15 +1,9 @@
-{{- if and (ne .Values.env "ncsa-int") (ne .Values.env "ncsa-stable") (ne .Values.env "base") -}}
-# Argo CD is already deployed on ncsa-int, ncsa-stable and at the base
+{{- if or (eq .Values.env "summit") (eq .Values.env "sandbox") -}}
 apiVersion: ricoberger.de/v1alpha1
 kind: VaultSecret
 metadata:
   name: tls-certs
   namespace: argocd
 spec:
-  {{- if eq .Values.env "ncsa-teststand" }}
-  path: secret/k8s_operator/lsst-nts-k8s.ncsa.illinois.edu/efd/tls-certs
-  {{- else }}
   path: secret/dm/square/efd/{{ .Values.env }}/tls-certs
-  {{- end }}
-  type: Opaque
 {{- end -}}
