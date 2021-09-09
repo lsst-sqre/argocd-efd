@@ -125,7 +125,7 @@ cp-helm-charts:
   ## Kafka Connect
   ## ------------------------------------------------------
   cp-kafka-connect:
-    enabled: false
+    enabled: true
     # This image adds specific connectors used by the EFD application
     image: lsstsqre/cp-kafka-connect
     imageTag: 5.5.2-0.9.1
