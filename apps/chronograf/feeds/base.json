@@ -4,7 +4,7 @@
     "home_page_url": "https://lsst.org",
     "feed_url": "https://lsst-sqre.github.io/argocd-efd/apps/chronograf/feeds/ncsa-teststand.json",
     "title": "NTS EFD status",
-    "description": "Status for the EFD deployment at Tucson Test Stand.",
+    "description": "Status for the EFD deployment at Base.",
     "items": [
         {
             "id": "6",
