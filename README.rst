@@ -15,9 +15,9 @@ TL;DR
    * - Base
      - https://kueyen.lsst.codes/argo-cd
    * - Tucson Test Stand
-     - <currently not deployed >
+     - https://tucson-teststand.lsst.codes/argo-cd
    * - NCSA Test Stand
-     - https://lsst-argocd-nts-efd.ncsa.illinois.edu
+     - https://lsst-argocd-nts-efd.ncsa.illinois.edu/argo-cd
    * - LSP Integration
      - https://lsst-lsp-int.ncsa.illinois.edu/argo-cd
    * - LSP Stable
@@ -56,7 +56,7 @@ Service names
 
 Service names for the apps use the following convention (when possible) ``<app>-<environment>-efd.lsst.codes``, for example, `chronograf-summit-efd.lsst.codes <https://chronograf-summit-efd.lsst.codes>`_.
 
-DNS records are created manually on AWS Route53.
+DNS records are created on AWS Route53 using the ``create_dns_record.sh`` helper script (which works with ``terraform 0.9.11`` on ``amd64``).
 
 Get the LoadBalancer Ingress IP address from ``kubectl describe service nginx-ingress-controller -n nginx-ingress``, and then use the following to create the DNS records, assuming that your AWS credentials are set throught the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` environment variables.
 
@@ -69,5 +69,11 @@ Get the LoadBalancer Ingress IP address from ``kubectl describe service nginx-in
   create_dns_record.sh influxdb $ENV-efd $LB_IP
   create_dns_record.sh chronograf $ENV-efd $LB_IP
   create_dns_record.sh schema-registry $ENV-efd $LB_IP
-  create_dns_record.sh control-center $ENV-efd $LB_IP
-  create_dns_record.sh kafka-0 $ENV-efd $LB_IP
+  create_dns_record.sh kafdrop $ENV-efd $LB_IP
+
+
+EFD Client
+^^^^^^^^^^
+
+The EFD client connects to the EFD InfluxDB instance using the ``efdreader`` user. See the ``segwarides`` secret for details.
+
