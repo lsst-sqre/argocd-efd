@@ -69,10 +69,12 @@ cp-helm-charts:
     ## Kafka Server properties
     ## ref: https://kafka.apache.org/documentation/#configuration
     configurationOverrides:
-      offsets.retention.minutes: 720
-      log.retention.hours: 12
-      log.retention.bytes: "21474836480"
-      log.cleaner.delete.retention.ms: "3600000"
+      offsets.retention.minutes: 120
+      log.retention.hours: 2
+      # 100MB
+      log.retention.bytes: "107374182400"
+      # 2h
+      log.cleaner.delete.retention.ms: "7200000"
 
 
   ## ------------------------------------------------------
@@ -87,10 +89,6 @@ cp-helm-charts:
     imagePullSecrets:
     #  - name: "regcred"
     heapOptions: "-Xms512M -Xmx512M"
-
-    configurationOverrides:
-      "mode.mutability": "true"
-
     resources: {}
     ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
     ## and remove the curly braces after 'resources:'

@@ -4,7 +4,7 @@ influxdb:
   ## ref: https://hub.docker.com/r/library/influxdb/tags/
   image:
     repo: "influxdb"
-    tag: "1.8.3"
+    tag: "1.8.5"
     pullPolicy: IfNotPresent
 
   ## Specify a service type
@@ -101,10 +101,19 @@ influxdb:
   config:
     data:
       cache_max_memory_size: 0
+      wal_fsync_delay: "100ms"
+      trace_logging_enabled: true
     http:
       enabled: true
       auth_enabled: true
       max_row_limit: 0
+    coordinator:
+      write_timeout: "60s"
+      max_concurrent_queries: 10
+      query_timeout: "900s"
+      log_queries_after: "15s"
+    continuous_queries:
+      enabled: false
 
   backup:
     enabled: false
