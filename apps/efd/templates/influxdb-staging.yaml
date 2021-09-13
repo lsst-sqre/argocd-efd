@@ -1,0 +1,20 @@
+{{- if (eq .Values.env "ncsa-stable") -}}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: influxdb-staging
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: influxdb-staging
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: apps/influxdb-staging
+    repoURL: https://github.com/lsst-sqre/argocd-efd
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values-{{ .Values.env }}.yaml
+{{- end -}}
