@@ -22,9 +22,6 @@ TL;DR
      - https://lsst-lsp-int.ncsa.illinois.edu/argo-cd
    * - LSP Stable
      - https://lsst-lsp-stable.ncsa.illinois.edu/argo-cd
-   * - Sandbox
-     - https://argocd-sandbox.lsst.codes
-
 
 
 Bootstrap an EFD deployment
@@ -36,7 +33,7 @@ Bootstrap an EFD deployment
 
 This repo uses the `app of apps pattern <https://argoproj.github.io/argo-cd/operator-manual/cluster-bootstrapping/>`_ to bootstrap an EFD deployment.
 
-The possible environments to deploy the EFD are ``summit``, ``base``, ``tucson-teststand``, ``ncsa-teststand``, ``ncsa-int``, ``ncsa-stable`` and ``sandbox``.
+The possible environments to deploy the EFD are ``summit``, ``base``, ``tucson-teststand``, ``ncsa-teststand``, ``ncsa-int``, and ``ncsa-stable``.
 
 Configuration values for each app are in the app's folder, e.g. ``apps/influxdb``, ``apps/chronograf``, etc in a file named after the environment: ``values-<environment>.yaml``.
 
