@@ -7,6 +7,20 @@
     "description": "Status for the EFD deployment at LDF.",
     "items": [
         {
+            "id": "5",
+            "url": "https://jira.lsstcorp.org/browse/DM-30083",
+            "title": "EFD time scale is now UTC",
+            "content_text": "According to RFC-767 we are switching the EFD time scale from TAI to UTC. This means that when you query the EFD via Chronograf or the EFD client the timestamps for the InfluxDB time column are returned in UTC. So you can use functions like now() in your InfluxQL queries safely, and manipulate time using Flux without worring about the time shift between TAI and UTC. The column private_sndStamp still has the timestamp values in TAI in case you need to work with them. This change affects telemetry recorded after 2021-10-13 21:52:55 UTC at the LDF EFD.",
+            "date_published": "2021-10-13T03:00:01-07:00",
+            "date_modified": "2021-10-13T03:00:01-07:00",
+            "image": "",
+            "authors": [
+                {
+                    "name": "SQuaRE"
+                }
+            ]
+        },
+        {
             "id": "4",
             "url": "https://chronograf-tucson-teststand-efd.lsst.codes",
             "title": "Tucson Test Stand EFD",
