@@ -19,7 +19,7 @@ kafka-connect-manager:
       topicRegex: "lsst.sal.*"
       autoUpdate: true
       checkInterval: "15000"
-      timestamp: private_sndStamp
+      timestamp: private_efdStamp
       connectInfluxErrorPolicy: NOOP
       connectInfluxMaxRetries: "10"
       connectInfluxRetryInterval: "60000"
