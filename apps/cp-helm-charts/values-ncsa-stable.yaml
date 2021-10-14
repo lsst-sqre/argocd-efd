@@ -20,11 +20,11 @@ cp-helm-charts:
       ##
       ## Size for Data dir, where ZooKeeper will store the in-memory database snapshots.
       dataDirSize: 50Gi
-      dataDirStorageClass: local-path
+      dataDirStorageClass: kafka-local-path
 
       ## Size for data log dir, which is a dedicated log device to be used, and helps avoid competition between logging and snaphots.
       dataLogDirSize: 50Gi
-      dataLogDirStorageClass: local-path
+      dataLogDirStorageClass: kafka-local-path
     resources: {}
     ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
     ## and remove the curly braces after 'resources:'
@@ -34,6 +34,8 @@ cp-helm-charts:
     #  requests:
     #   cpu: 100m
     #   memory: 128Mi
+    nodeSelector:
+      kafka: ok
 
   ## ------------------------------------------------------
   ## Kafka
@@ -51,7 +53,7 @@ cp-helm-charts:
     persistence:
       enabled: true
       size: 50Gi
-      storageClass: local-path
+      storageClass: kafka-local-path
       disksPerBroker: 1
     resources: {}
     ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
@@ -65,14 +67,17 @@ cp-helm-charts:
     ## Enable external access to the kafka cluster through NodePort
     nodeport:
       enabled: true
-
+    nodeSelector:
+      kafka: ok
 
     ## Kafka Server properties
     ## ref: https://kafka.apache.org/documentation/#configuration
-    ## Set the retetion period for Kafka at LDF to 5 days,
-    ## this makes it less likely to "lose" offsets for the replication service.
+    ## we have a data partition of 500G for the broker at LDF which is shared with zookeeper.
+    ## Set retention period to 48h and retention bytes to 300G
     configurationOverrides:
-      offsets.retention.minutes: 7200
+      offsets.retention.minutes: 2880
+      log.retention.hours: 48
+      log.retention.bytes: "322122547200"
 
 
   ## ------------------------------------------------------
