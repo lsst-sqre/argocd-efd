@@ -1,4 +1,4 @@
 dependencies:
 - name: telegraf-ds
-  version: 1.0.20
-  repository: https://helm.influxdata.com/
+  version: 1.0.23
+  repository: https://lsst-sqre.github.io/charts
