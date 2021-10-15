@@ -8,11 +8,21 @@ telegraf-ds:
         secretKeyRef:
           name: telegraf-secret
           key: password
-# This pulls HOSTNAME from the node, not the pod.
+    # This pulls HOSTNAME from the node, not the pod.
     - name: HOSTNAME
       valueFrom:
         fieldRef:
           fieldPath: spec.nodeName
+    # Mount the host filesystem and set the appropriate env variables.
+    # ref: https://github.com/influxdata/telegraf/blob/master/docs/FAQ.md
+    # HOST_PROC is required by the cpu, disk, diskio, kernel and processes input plugins
+    - name: HOST_PROC
+      value: /hostfs/proc
+    # HOST_SYS is required by the diskio plugin
+    - name: HOST_SYS
+      value: /hostfs/sys
+    - name: HOST_MOUNT_PREFIX
+      value: /hostfs
 
   override_config:
     toml: |+
