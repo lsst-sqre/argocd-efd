@@ -15,8 +15,8 @@ spec:
   path: secret/k8s_operator/base-lsp.lsst.codes/efd/influxdb-auth
   {{- else if eq .Values.env "tucson-teststand" }}
   path: secret/k8s_operator/tucson-teststand.lsst.codes/efd/influxdb-auth
-  {{- else }}
-  path: secret/dm/square/efd/{{ .Values.env }}/influxdb-auth
+  {{- else if eq .Values.env "summit" }}
+  path: secret/k8s_operator/summit-lsp.lsst.codes/efd/influxdb-auth
   {{- end }}
   type: Opaque
 {{- end -}}
