@@ -2,7 +2,7 @@
 kafka-connect-manager:
   image:
     repository: lsstsqre/kafkaconnect
-    tag: 0.9.1
+    tag: 0.9.3
     pullPolicy: Always
 
   secrets:
@@ -53,6 +53,27 @@ kafka-connect-manager:
     topicRegex: "_schemas,lsst.sal.*logevent_heartbeat,lsst.sal.WeatherStation.*"
     tasksMax: 1
     syncTopicAclsEnabled: false
+
+  s3Sink:
+    enabled: true
+    name: s3-sink
+    s3BucketName: "efd-int"
+    s3Region: "us-east-1"
+    s3SchemaCompatibility: "NONE"
+    topicsDir: "topics"
+    awsSecret: "aws-secret"
+    flushSize: "1000"
+    rotateIntervalMs: "60000"
+    partitionDurationMs: "3600000"
+    pathFormat: "'year'=YYYY/'month'=MM/'day'=dd/'hour'=HH"
+    tasksMax: 1
+    topicsRegex: "lsst.sal.*"
+    checkInterval: "15000"
+    excludedTopicRegex: ""
+    locale: "en-US"
+    timezone: "UTC"
+    timestampExtractor: "Record"
+    timestampField: "private_efdStamp"
 
 
 ## Environment where the EFD is deployed

@@ -1,4 +1,4 @@
 dependencies:
 - name: kafka-connect-manager
-  version: 0.9.2
+  version: 0.9.5
   repository: https://lsst-sqre.github.io/charts/
