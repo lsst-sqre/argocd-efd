@@ -63,7 +63,8 @@ kafka-connect-manager:
     topicsDir: "topics"
     awsSecret: "aws-secret"
     flushSize: "1000"
-    rotateIntervalMs: "60000"
+    # invoke file commits to S3 every 10 minutes
+    rotateIntervalMs: "600000"
     partitionDurationMs: "3600000"
     pathFormat: "'year'=YYYY/'month'=MM/'day'=dd/'hour'=HH"
     tasksMax: 1
