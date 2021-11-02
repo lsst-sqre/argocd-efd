@@ -60,6 +60,10 @@ kafka-connect-manager:
     s3BucketName: "efd-int"
     s3Region: "us-east-1"
     s3SchemaCompatibility: "NONE"
+    s3PartRetries: 3
+    s3RetryBackoffMs: 200
+    schemaCacheConfig: 5000
+    behaviorOnNullValues: "fail"
     topicsDir: "topics"
     awsSecret: "aws-secret"
     flushSize: "1000"
@@ -74,7 +78,7 @@ kafka-connect-manager:
     locale: "en-US"
     timezone: "UTC"
     timestampExtractor: "Record"
-    timestampField: "private_efdStamp"
+    timestampField: ""
 
 
 ## Environment where the EFD is deployed
