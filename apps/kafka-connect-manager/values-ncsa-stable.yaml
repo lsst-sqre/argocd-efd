@@ -2,7 +2,7 @@
 kafka-connect-manager:
   image:
     repository: lsstsqre/kafkaconnect
-    tag: 0.9.1
+    tag: 0.9.3
     pullPolicy: Always
 
   secrets:
@@ -52,6 +52,32 @@ kafka-connect-manager:
     topicRegex: "_schemas,lsst.sal.*"
     tasksMax: 10
     syncTopicAclsEnabled: false
+
+  s3Sink:
+    enabled: true
+    name: s3-sink
+    s3BucketName: "efd-stable"
+    s3SchemaCompatibility: "NONE"
+    s3PartRetries: 3
+    s3RetryBackoffMs: 200
+    schemaCacheConfig: 5000
+    behaviorOnNullValues: "fail"
+    topicsDir: "topics"
+    awsSecret: "aws-secret"
+    flushSize: "1000"
+    # invoke file commits to S3 every 10 minutes
+    rotateIntervalMs: "600000"
+    partitionDurationMs: "3600000"
+    pathFormat: "'year'=YYYY/'month'=MM/'day'=dd/'hour'=HH"
+    tasksMax: 10
+    topicsRegex: "lsst.sal.*"
+    checkInterval: "15000"
+    excludedTopicRegex: ""
+    locale: "en-US"
+    timezone: "UTC"
+    timestampExtractor: "Record"
+    timestampField: ""
+    storeUrl: "http://lsst-nfs.ncsa.illinois.edu:9003"
 
 
 ## Environment where the EFD is deployed
