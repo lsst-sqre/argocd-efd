@@ -79,6 +79,7 @@ kafka-connect-manager:
     timezone: "UTC"
     timestampExtractor: "Record"
     timestampField: ""
+    storeUrl: "http://lsst-nfs.ncsa.illinois.edu:9003"
 
 
 ## Environment where the EFD is deployed
