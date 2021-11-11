@@ -49,7 +49,7 @@ cp-helm-charts:
     ## https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
     imagePullSecrets:
     #  - name: "regcred"
-    heapOptions: "-Xms512M -Xmx512M"
+    heapOptions: "-Xms2048M -Xmx2048M"
     persistence:
       enabled: true
       size: 50Gi
@@ -142,7 +142,7 @@ cp-helm-charts:
     imagePullSecrets:
     #  - name: "regcred"
 
-    heapOptions: "-Xms2048M -Xmx2048M"
+    heapOptions: "-Xms8192M -Xmx8192M"
     resources: {}
     ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
     ## and remove the curly braces after 'resources:'
