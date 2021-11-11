@@ -52,6 +52,7 @@ kafka-connect-manager:
     topicRegex: "_schemas,lsst.sal.*"
     tasksMax: 10
     syncTopicAclsEnabled: false
+    maxRequestSize: 26214400
 
   s3Sink:
     enabled: true
