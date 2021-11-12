@@ -60,6 +60,7 @@ kafka-connect-manager:
     s3BucketName: "efd-stable"
     s3SchemaCompatibility: "NONE"
     s3PartRetries: 3
+    s3PartSize: "5242880"
     s3RetryBackoffMs: 200
     schemaCacheConfig: 5000
     behaviorOnNullValues: "fail"
