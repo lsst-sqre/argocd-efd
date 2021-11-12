@@ -20,7 +20,7 @@ kafka-connect-manager:
       autoUpdate: true
       checkInterval: "15000"
       excludedTopicRegex: "lsst.sal.WeatherStation.*"
-      timestamp: private_sndStamp
+      timestamp: private_efdStamp
       connectInfluxErrorPolicy: NOOP
       connectInfluxMaxRetries: "10"
       connectInfluxRetryInterval: "60000"
@@ -36,7 +36,7 @@ kafka-connect-manager:
       autoUpdate: true
       checkInterval: "15000"
       excludedTopicRegex: ""
-      timestamp: private_sndStamp
+      timestamp: private_efdStamp
       connectInfluxErrorPolicy: NOOP
       connectInfluxMaxRetries: "10"
       connectInfluxRetryInterval: "60000"
