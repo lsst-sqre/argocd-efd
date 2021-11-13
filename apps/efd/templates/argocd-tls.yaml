@@ -5,5 +5,5 @@ metadata:
   name: tls-certs
   namespace: argocd
 spec:
-  path: secret/dm/square/efd/{{ .Values.env }}/tls-certs
+  path: secret/k8s_operator/summit-lsp.lsst.codes/efd/tls-certs
 {{- end -}}
