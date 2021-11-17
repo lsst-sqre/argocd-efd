@@ -1,4 +1,4 @@
-{{- if or (eq .Values.env "summit") (eq .Values.env "sandbox")}}
+{{- if (eq .Values.env "sandbox")}}
 # nginx-ingress is already deployed on ncsa-teststand, ncsa-int, ncsa-stable, and at the base
 apiVersion: argoproj.io/v1alpha1
 kind: Application
