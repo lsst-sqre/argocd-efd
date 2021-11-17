@@ -23,5 +23,5 @@ spec:
   tls:
   - hosts:
     - argocd-{{ .Values.env }}.lsst.codes
-    secretName: tls-certs
+    secretName: argocd-secret
 {{- end -}}
