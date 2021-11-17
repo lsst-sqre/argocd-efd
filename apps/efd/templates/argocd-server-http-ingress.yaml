@@ -1,4 +1,4 @@
-{{- if (eq .Values.env "sandbox") -}}
+{{- if or (eq .Values.env "summit") (eq .Values.env "sandbox") -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
