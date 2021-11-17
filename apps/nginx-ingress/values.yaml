@@ -5,3 +5,9 @@ nginx-ingress:
     # See https://argoproj.github.io/argo-cd/operator-manual/ingress/
     extraArgs:
       enable-ssl-passthrough: ""
+
+  hostPort:
+    enabled: true
+    ports:
+      http: 80
+      https: 443
