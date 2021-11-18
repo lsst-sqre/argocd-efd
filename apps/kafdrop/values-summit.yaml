@@ -12,6 +12,6 @@ kafdrop:
   jmx:
     port: 5556
 
-  cmdArgs: "--message.format=AVRO --schemaregistry.connect=https://schema-registry-summit-efd.lsst.codes/"
+  cmdArgs: "--message.format=AVRO --schemaregistry.connect=https://schema-registry-summit-efd.lsst.codes:30828/"
 
 env: summit
