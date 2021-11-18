@@ -3,14 +3,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nginx-ingress
+  name: ingress-nginx
 spec:
   destination:
-    namespace: nginx-ingress
+    namespace: ingress-nginx
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: apps/nginx-ingress
+    path: apps/ingress-nginx
     repoURL: https://github.com/lsst-sqre/argocd-efd
     targetRevision: HEAD
     helm:
