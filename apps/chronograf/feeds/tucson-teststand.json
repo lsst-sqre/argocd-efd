@@ -7,6 +7,20 @@
     "description": "Status for the EFD deployment at Tucson Test Stand.",
     "items": [
         {
+            "id": "8",
+            "url": "https://github.com/influxdata/chronograf/blob/master/CHANGELOG.md",
+            "title": "Chronograf 1.9.2 (nightly build)",
+            "content_text": "We've updated Chronograf to a nightly build that includes a fix to issue #5836: Allow to save a new TICKscript, reported by Michael. This will be rolled out elsewhere when 1.9.2 is released.",
+            "date_published": "2022-01-20T03:00:00-07:00",
+            "date_modified": "2022-01-20T03:00:00-07:00",
+            "image": "",
+            "authors": [
+                {
+                    "name": "SQuaRE"
+                }
+            ]
+        },
+        {
             "id": "7",
             "url": "https://github.com/influxdata/chronograf/releases/tag/1.9.1",
             "title": "Chronograf 1.9.1",
