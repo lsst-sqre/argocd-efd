@@ -3,7 +3,7 @@ chronograf:
   ##
   image:
     repository: "quay.io/influxdb/chronograf"
-    tag: "nightly"
+    tag: "1.9.3"
     pullPolicy: IfNotPresent
 
   ## Specify a service type

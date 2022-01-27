@@ -7,6 +7,20 @@
     "description": "Status for the EFD deployment at the Summit.",
     "items": [
         {
+            "id": "7",
+            "url": "https://github.com/influxdata/chronograf/releases/tag/1.9.3",
+            "title": "Chronograf 1.9.3",
+            "content_text": "Upgrade Chronograf to the latest release.",
+            "date_published": "2022-01-27T02:00:00-07:00",
+            "date_modified": "2022-01-27T02:00:00-07:00",
+            "image": "",
+            "authors": [
+                {
+                    "name": "SQuaRE"
+                }
+            ]
+        },
+        {
             "id": "6",
             "url": "https://jira.lsstcorp.org/browse/DM-30083",
             "title": "EFD time scale is now UTC",
