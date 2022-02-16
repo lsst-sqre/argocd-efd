@@ -13,9 +13,7 @@ spec:
       - backend:
           serviceName: cp-helm-charts-cp-schema-registry
           servicePort: 8081
-    {{if eq .Values.env "ncsa-teststand" -}}
-    host: lsst-schema-registry-nts-efd.ncsa.illinois.edu
-    {{- else if eq .Values.env "ncsa-int" -}}
+    {{- if eq .Values.env "ncsa-int" -}}
     host: lsst-schema-registry-int-efd.ncsa.illinois.edu
     {{- else if eq .Values.env "ncsa-stable" -}}
     host: lsst-schema-registry-efd.ncsa.illinois.edu
@@ -24,9 +22,7 @@ spec:
     {{- end }}
   tls:
   - hosts:
-    {{if eq .Values.env "ncsa-teststand" -}}
-    - lsst-schema-registry-nts-efd.ncsa.illinois.edu
-    {{- else if eq .Values.env "ncsa-int" -}}
+    {{- if eq .Values.env "ncsa-int" -}}
     - lsst-schema-registry-int-efd.ncsa.illinois.edu
     {{- else if eq .Values.env "ncsa-stable" -}}
     - lsst-schema-registry-efd.ncsa.illinois.edu

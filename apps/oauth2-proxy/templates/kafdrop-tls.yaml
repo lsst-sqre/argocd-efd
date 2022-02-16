@@ -4,9 +4,7 @@ metadata:
   name: tls-certs
   namespace: oauth2-proxy
 spec:
-  {{- if eq .Values.env "ncsa-teststand" }}
-  path: secret/k8s_operator/lsst-nts-k8s.ncsa.illinois.edu/efd/tls-certs
-  {{- else if eq .Values.env "ncsa-int" }}
+  {{- if eq .Values.env "ncsa-int" }}
   path: secret/k8s_operator/lsst-lsp-int.ncsa.illinois.edu/efd/tls-certs
   {{- else if eq .Values.env "ncsa-stable" }}
   path: secret/k8s_operator/lsst-lsp-stable.ncsa.illinois.edu/efd/tls-certs
