@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: schema-registry-http-ingress
@@ -10,23 +10,27 @@ spec:
   rules:
   - http:
       paths:
-      - backend:
-          serviceName: cp-helm-charts-cp-schema-registry
-          servicePort: 8081
-    {{- if eq .Values.env "ncsa-int" -}}
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: cp-helm-charts-cp-schema-registry
+            port:
+              number: 8081
+    {{- if eq .Values.env "ncsa-int" }}
     host: lsst-schema-registry-int-efd.ncsa.illinois.edu
-    {{- else if eq .Values.env "ncsa-stable" -}}
+    {{- else if eq .Values.env "ncsa-stable" }}
     host: lsst-schema-registry-efd.ncsa.illinois.edu
-    {{- else -}}
+    {{- else }}
     host: schema-registry-{{ .Values.env }}-efd.lsst.codes
     {{- end }}
   tls:
   - hosts:
-    {{- if eq .Values.env "ncsa-int" -}}
+    {{- if eq .Values.env "ncsa-int" }}
     - lsst-schema-registry-int-efd.ncsa.illinois.edu
-    {{- else if eq .Values.env "ncsa-stable" -}}
+    {{- else if eq .Values.env "ncsa-stable" }}
     - lsst-schema-registry-efd.ncsa.illinois.edu
-    {{- else -}}
+    {{- else }}
     - schema-registry-{{ .Values.env }}-efd.lsst.codes
     {{- end }}
     secretName: tls-certs
