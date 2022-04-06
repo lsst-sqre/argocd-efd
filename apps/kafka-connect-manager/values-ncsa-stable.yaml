@@ -15,7 +15,7 @@ kafka-connect-manager:
       connectInfluxUrl: "http://influxdb.influxdb:8086"
       connectInfluxDb: "efd"
       influxSecret: influxdb-auth
-      tasksMax: 10
+      tasksMax: 1
       topicRegex: "lsst.sal.*"
       autoUpdate: true
       checkInterval: "15000"
@@ -31,7 +31,7 @@ kafka-connect-manager:
       connectInfluxUrl: "http://influxdb.influxdb:8086"
       connectInfluxDb: "efd"
       influxSecret: influxdb-auth
-      tasksMax: 10
+      tasksMax: 1
       topicRegex: "lsst.sal.MTM2.*"
       autoUpdate: true
       checkInterval: "15000"
@@ -71,7 +71,7 @@ kafka-connect-manager:
     rotateIntervalMs: "600000"
     partitionDurationMs: "3600000"
     pathFormat: "'year'=YYYY/'month'=MM/'day'=dd/'hour'=HH"
-    tasksMax: 10
+    tasksMax: 1
     topicsRegex: "lsst.sal.*"
     checkInterval: "15000"
     excludedTopicRegex: ""
