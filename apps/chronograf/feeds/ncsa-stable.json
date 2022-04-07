@@ -2,10 +2,24 @@
     "version": "https://jsonfeed.org/version/1.1",
     "user_comment": "EFD status feed by SQuaRE/Rubin Observatory.",
     "home_page_url": "https://lsst.org",
-    "feed_url": "https://lsst-sqre.github.io/argocd-efd/apps/chronograf/feeds/summit.json",
-    "title": "Summit EFD status",
+    "feed_url": "https://lsst-sqre.github.io/argocd-efd/apps/chronograf/feeds/ncsa-stable.json",
+    "title": "NCSA Stable EFD status",
     "description": "Status for the EFD deployment at LDF.",
     "items": [
+        {
+            "id": "8",
+            "url": "https://github.com/influxdata/chronograf/releases/tag/1.9.4",
+            "title": "Chronograf 1.9.4",
+            "content_text": "Upgrade Chronograf to the latest release.",
+            "date_published": "2022-04-07T02:00:00-07:00",
+            "date_modified": "2022-04-07T02:00:00-07:00",
+            "image": "",
+            "authors": [
+                {
+                    "name": "SQuaRE"
+                }
+            ]
+        },
         {
             "id": "7",
             "url": "https://github.com/influxdata/chronograf/releases/tag/1.9.3",

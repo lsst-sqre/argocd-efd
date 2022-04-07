@@ -7,6 +7,20 @@
     "description": "Status for the EFD deployment at the Summit.",
     "items": [
         {
+            "id": "8",
+            "url": "https://github.com/influxdata/chronograf/releases/tag/1.9.4",
+            "title": "Chronograf 1.9.4",
+            "content_text": "Upgrade Chronograf to the latest release.",
+            "date_published": "2022-04-07T02:00:00-07:00",
+            "date_modified": "2022-04-07T02:00:00-07:00",
+            "image": "",
+            "authors": [
+                {
+                    "name": "SQuaRE"
+                }
+            ]
+        },
+        {
             "id": "7",
             "url": "https://github.com/influxdata/chronograf/releases/tag/1.9.3",
             "title": "Chronograf 1.9.3",
