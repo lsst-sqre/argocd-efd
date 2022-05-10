@@ -10,7 +10,7 @@
             "id": "11",
             "url": "https://jira.lsstcorp.org/browse/DM-34040",
             "title": "Increase InfluxDB time precision",
-            "content_text": "CSCs like the scriptLog send events to the EFD with a time difference smaller than 1ms. We have increasead the time precision in InfluxDB from milliseconds to microseconds to account for that.",
+            "content_text": "Some CSCs send events to the EFD with a time difference smaller than 1ms. We have increasead the time precision in InfluxDB from milliseconds to microseconds to account for that.",
             "date_published": "2022-05-09T02:00:00-07:00",
             "date_modified": "2022-05-09T02:00:00-07:00",
             "image": "",
