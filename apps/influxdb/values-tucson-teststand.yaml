@@ -41,7 +41,7 @@ influxdb:
     ##
     storageClass: rook-ceph-block
     accessMode: ReadWriteOnce
-    size: 1000Gi
+    size: 1500Gi
 
   ## Create default user through Kubernetes job
   ## Defaults indicated below
