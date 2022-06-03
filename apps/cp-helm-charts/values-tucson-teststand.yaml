@@ -53,12 +53,9 @@ cp-helm-charts:
       size: 300Gi
       storageClass: rook-ceph-block
       disksPerBroker: 1
-    resources: {}
-    ## If you do want to specify resources, uncomment the following lines, adjust them as necessary,
-    ## and remove the curly braces after 'resources:'
-    #  limits:
-    #   cpu: 100m
-    #   memory: 128Mi
+    resources:
+      limits:
+        memory: 32Gi
     #  requests:
     #   cpu: 100m
     #   memory: 128Mi
