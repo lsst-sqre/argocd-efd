@@ -80,6 +80,10 @@ influxdb:
 
       existingSecret: influxdb-auth
 
+  # resources:
+  #   limits:
+  #     memory: 32Gi
+
   ingress:
     enabled: true
     tls: true
