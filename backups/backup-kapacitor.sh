@@ -10,13 +10,17 @@ export KUBECONFIG=$HOME/.kube/config-${instance}.yaml
 
 kubectl config get-contexts
 
-pod=$(kubectl get pods -n kapacitor | grep kapacitor | cut -d " " -f1)
+read -r -p "Do you want to proceed? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+    pod=$(kubectl get pods -n kapacitor | grep kapacitor | cut -d " " -f1)
 
-echo "Found pod at $instance instance: $pod"
+    echo "Found pod at $instance instance: $pod"
 
-date=$(date +%Y-%m-%d)
+    date=$(date +%Y-%m-%d)
 
-mkdir -p $instance-kapacitor-$date
+    mkdir -p $instance-kapacitor-$date
 
-echo "Backing up kapacitor database..."
-kubectl cp -n kapacitor $pod:/var/lib/kapacitor/kapacitor.db $instance-kapacitor-$date/kapacitor.db
+    echo "Backing up kapacitor database..."
+    kubectl cp -n kapacitor $pod:/var/lib/kapacitor/kapacitor.db $instance-kapacitor-$date/kapacitor.db
+fi
