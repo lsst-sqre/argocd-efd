@@ -1,3 +1,4 @@
+{{- if (ne .Values.env "tucson-teststand") -}}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -16,3 +17,4 @@ spec:
     helm:
       valueFiles:
         - values-{{ .Values.env }}.yaml
+{{- end -}}
