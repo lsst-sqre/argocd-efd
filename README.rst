@@ -1,4 +1,7 @@
 
+NOTE: Deployment configuration in this repo was moved to Phalanx and is now part of Sasquatch.
+
+
 argocd-efd
 ==========
 EFD deployment configuration managed by Argo CD
